@@ -11,9 +11,16 @@ public abstract class Entity {
 	private int x;
 	private int y;
 	private Image image;
+	private Sprite sprite;
 
+	public Entity(final Sprite sprite, final int x, final int y) {
+		this.setSprite(sprite);
+		this.x = x;
+		this.y = y;
+	}
+	
 	public Entity() {
-
+		
 	}
 
 	public int getX() {
@@ -32,11 +39,19 @@ public abstract class Entity {
 		this.y = y;
 	}
 
-	public Image getImage() {
-		return image;
-	}
-
 	public void setImage(Image image) {
 		this.image = image;
 	}
+
+	public final Sprite getSprite() {
+		return this.sprite;
+	}
+
+	private void setSprite(final Sprite sprite) {
+		this.sprite = sprite;
+	}
+	
+	public final Image getImage() {
+        return this.getSprite().getImage();
+    }
 }

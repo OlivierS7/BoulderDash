@@ -23,6 +23,7 @@ public interface IModel {
 	 *
 	 * @param code
 	 *          the code
+	 * @return 
 	 */
 	void loadMap(String code);
 

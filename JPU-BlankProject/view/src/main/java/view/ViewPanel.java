@@ -10,6 +10,8 @@ import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import entity.Entity;
+
 /**
  * The Class ViewPanel.
  *
@@ -68,20 +70,24 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.drawString(this.getViewFrame().getModel().getMap().getContent(), 10, 20);
-		Image[] img = new Image[10];
-        try {
-            img[0] = ImageIO.read(new File("C:\\Users\\Olivier\\Desktop\\Projet\\A1\\Projet 5\\RESSOURCES\\sprite\\sprite\\diamond.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
+//		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+//		graphics.drawString(this.getViewFrame().getModel().getMap().getContent(), 10, 20);
+        Entity[][] entity = viewFrame.getModel().getMap().getEntityMap();
+        for(int x = 0; x <this.viewFrame.getModel().getMap().getWidthMap(); x++) {
+            for(int y=0; y < this.viewFrame.getModel().getMap().getHeightMap(); y++) {
+                if (entity[x][y] != null) {
+                	graphics.drawImage(entity[x][y].getSprite().getImage(), x*16, y*16, this);      
+				}
+                          
+                
+            }
+            
+            
         }
-        String map = viewFrame.loadMap();
-        String[] mapfinal = map.split("\n");
-        for (int i = 0; i < mapfinal.length; i++) {
-            graphics.drawString(mapfinal[i], 50, 50 + i * 10);
-            //System.out.print(mapfinal[i]);
-            graphics.drawImage(img[0], 400, 400, 16, 16, this);
-        }
+
 	}
+
+	public void setOnTheMap(char finalCharMap, int x, int y) {
+		//this.mapEntity[x][y] = finalCharMap;
+	} 
 }

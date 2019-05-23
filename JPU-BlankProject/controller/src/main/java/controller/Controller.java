@@ -16,7 +16,6 @@ public final class Controller implements IController {
 	/** The model. */
 	private IModel	model;
 
-	private String level;
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -28,7 +27,6 @@ public final class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		this.model.loadMap(level);
 	}
 
 	/**
@@ -40,7 +38,7 @@ public final class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		this.view.printMessage("Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue d votre choix.");
+		this.view.printMessage("Bienvenue dans le jeu BoulderDash");
 	}
 
 	/**
@@ -76,19 +74,23 @@ public final class Controller implements IController {
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
-			case English:
+			case Map1:
 				this.model.loadMap("1");
 				break;
-			case Francais:
+			case Map2:
 				this.model.loadMap("2");
 				break;
-			case Deutsch:
+			case Map3:
 				this.model.loadMap("3");
 				break;
-			case Indonesia:
+			case Map4:
 				this.model.loadMap("4");
 				break;
+			case Map5:
+				this.model.loadMap("5");
+				break;
 			default:
+				this.model.loadMap("1");
 				break;
 		}
 	}
