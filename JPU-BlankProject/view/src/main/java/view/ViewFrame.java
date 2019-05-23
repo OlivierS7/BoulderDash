@@ -131,7 +131,8 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setResizable(false);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
+		//this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
+		this.setSize(700, 700);
 		this.setLocationRelativeTo(null);
 	}
 
@@ -144,6 +145,32 @@ class ViewFrame extends JFrame implements KeyListener {
 	public void printMessage(final String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
+	
+	public String loadMap() {
+        String map = "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\r\n" + 
+                "WTTTTTTTTTTTTOTTTTTTTTOOTTTTTTTTTTTTTTOW\r\n" + 
+                "WTTTTTTTDTTTOOOOOOTDTTTTTTOODTTTTTTTTOOW\r\n" + 
+                "WTOPOTTTTTTTOTTTOTTTTTTTTTTOOOTTTDTTOOTW\r\n" + 
+                "WTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTDTTOTTW\r\n" + 
+                "WTTTOTTTTTTTTTTTDTTTOTTTTTTTTTTOTTTTOTTW\r\n" + 
+                "WTOOOTTTTSOOTTTTTTTTOOOOTTTTTTTTTTTTTTTW\r\n" + 
+                "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWTTTOTOTTTTW\r\n" + 
+                "WOOOTOOTTTTTTTTTTTTTOOTTTTTTTTTTTTTOTTTW\r\n" + 
+                "WOTTTTTOTOOTTTTTTTDOTTTTTTTTTTTTTTTTTTTW\r\n" + 
+                "WTTTOTTTOOTTOTTTTTOTTTTTOTTTTDTTTTTTTTTW\r\n" + 
+                "WTOOTTTDOTTTOTTTTTOTTTTTOTTOTOTTTTTTTTOW\r\n" + 
+                "WTOTTTTTTTTTODTTTTTTTTTOTTTOTTTTTTOOTTOW\r\n" + 
+                "WTOOTTTOTTTTTTTTTTTTTOOTTTTDTTTTTTOOTTTW\r\n" + 
+                "WTTTDTTOWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\r\n" + 
+                "WTTTTTTTTTTTTTTTTOTTTTTTTTTTTTTOOOTTTTTW\r\n" + 
+                "WTTTTTTTTTTTTDOTTOTTTTTTOTTTDOOOTTTOTTXW\r\n" + 
+                "WTTOTTTTTTOTTTOTTOOTTTTOOTTTDTTTTTTTTTTW\r\n" + 
+                "WTTTOOOTTTTOTTOTTTDTTTTTTTTODTTTTTOOTTTW\r\n" + 
+                "WTOTTODTTTTOTTTTTTTTTTTTTTTOTTTTTOTTTTOW\r\n" + 
+                "WTTTTOTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTW\r\n" + 
+                "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\r\n";
+        return map;
+    }
 
 	/*
 	 * (non-Javadoc)

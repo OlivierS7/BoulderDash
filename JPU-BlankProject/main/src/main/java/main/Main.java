@@ -28,8 +28,8 @@ public abstract class Main {
         final Controller controller = new Controller(view, model);
         view.setController(controller);
 
-        controller.control();
-        controller.orderPerform(ControllerOrder.English);
+        //controller.control();
+        //controller.orderPerform(ControllerOrder.English);
     }
 }
 // modif lloyd

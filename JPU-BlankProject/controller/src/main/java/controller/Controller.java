@@ -16,6 +16,7 @@ public final class Controller implements IController {
 	/** The model. */
 	private IModel	model;
 
+	private String level;
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -27,6 +28,7 @@ public final class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
+		this.model.loadMap(level);
 	}
 
 	/**
@@ -75,16 +77,16 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case English:
-				this.model.loadHelloWorld("GB");
+				this.model.loadMap("1");
 				break;
 			case Francais:
-				this.model.loadHelloWorld("FR");
+				this.model.loadMap("2");
 				break;
 			case Deutsch:
-				this.model.loadHelloWorld("DE");
+				this.model.loadMap("3");
 				break;
 			case Indonesia:
-				this.model.loadHelloWorld("ID");
+				this.model.loadMap("4");
 				break;
 			default:
 				break;

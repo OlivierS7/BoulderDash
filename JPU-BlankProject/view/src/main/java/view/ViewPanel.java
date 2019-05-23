@@ -1,9 +1,13 @@
 package view;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -65,6 +69,19 @@ class ViewPanel extends JPanel implements Observer {
 	@Override
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.drawString(this.getViewFrame().getModel().getHelloWorld().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMap().getContent(), 10, 20);
+		Image[] img = new Image[10];
+        try {
+            img[0] = ImageIO.read(new File("C:\\Users\\Olivier\\Desktop\\Projet\\A1\\Projet 5\\RESSOURCES\\sprite\\sprite\\diamond.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String map = viewFrame.loadMap();
+        String[] mapfinal = map.split("\n");
+        for (int i = 0; i < mapfinal.length; i++) {
+            graphics.drawString(mapfinal[i], 50, 50 + i * 10);
+            //System.out.print(mapfinal[i]);
+            graphics.drawImage(img[0], 400, 400, 16, 16, this);
+        }
 	}
 }

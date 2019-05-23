@@ -5,16 +5,18 @@ package entity;
  *
  * @author Jean-Aymeric Diet
  */
-public class HelloWorld extends Entity {
+public class Map extends Entity {
 
 	/** The id. */
-	private int			id;
+	private int	id;
 
 	/** The key. */
 	private String	key;
 
 	/** The message. */
-	private String	message;
+	private String	content;
+	
+	private Entity[][] mapEntity;
 
 	/**
 	 * Instantiates a new hello world.
@@ -26,17 +28,26 @@ public class HelloWorld extends Entity {
 	 * @param message
 	 *          the message
 	 */
-	public HelloWorld(final int id, final String key, final String message) {
+	public Map(final int id, final String key, final String message) {
 		this.setId(id);
 		this.setKey(key);
-		this.setMessage(message);
+		this.setContent(message);
+		createMap();
+	}
+
+	private void createMap() {
+		String[] map = this.getContent().split("\n");
 	}
 
 	/**
 	 * Instantiates a new hello world.
 	 */
-	public HelloWorld() {
+	public Map() {
 		this(0, "", "");
+	}
+
+	public Map(String content) {
+		this.setContent(content);
 	}
 
 	/**
@@ -82,8 +93,8 @@ public class HelloWorld extends Entity {
 	 *
 	 * @return the message
 	 */
-	public String getMessage() {
-		return this.message;
+	public String getContent() {
+		return this.content;
 	}
 
 	/**
@@ -92,8 +103,8 @@ public class HelloWorld extends Entity {
 	 * @param message
 	 *          the new message
 	 */
-	public void setMessage(final String message) {
-		this.message = message;
+	public void setContent(final String message) {
+		this.content = message;
 	}
 
 }
