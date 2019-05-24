@@ -28,6 +28,8 @@ public interface IModel {
 	void loadMap(String code);
 	
 	void movePlayer(char c);
+	
+	void checkGravity();
 
 	/**
 	 * Gets the observable.

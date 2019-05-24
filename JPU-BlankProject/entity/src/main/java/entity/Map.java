@@ -107,6 +107,7 @@ public class Map extends Entity{
 		}
 	}
 	
+	
 	public void moveUp() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY()-1);
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX(), getPlayer().getY()-1);
@@ -171,13 +172,14 @@ public class Map extends Entity{
 	}
 	
 	public void createMap() {
-		String map = this.getContent(); //Loading map
+		String map = this.getContent(); //Loading map in a string
 		if (getHeightMap() >= 1 && getWidthMap() >= 1) {
-			this.mapEntity = new Entity[this.getWidthMap()][this.getHeightMap()];
+			this.mapEntity = new Entity[this.getWidthMap()][this.getHeightMap()]; //Instanciate a two dimensional Array of Entity
 			for (int y = 0; y < getHeightMap(); y++) {
-				String[] finalMap = map.split("\n");
+				String[] finalMap = map.split("\n"); //Load each line of the map in an array of String
                 for (int x = 0; x < getWidthMap(); x++) {
                 	switch (finalMap[y].toCharArray()[x]) {
+                	//Look Character and Load entity related to the character
 					case 'W':
 						mapEntity[x][y] = new Wall(x, y);
 						break;

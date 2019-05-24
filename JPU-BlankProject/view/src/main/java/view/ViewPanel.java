@@ -87,6 +87,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		this.readImage();
         Entity[][] entity = viewFrame.getModel().getMap().getEntityMap();
+        this.viewFrame.getModel().checkGravity();
         for(int x = 0; x <this.viewFrame.getModel().getMap().getWidthMap(); x++) {
             for(int y=0; y < this.viewFrame.getModel().getMap().getHeightMap(); y++) {
                 if (entity[x][y] != null) {

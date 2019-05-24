@@ -3,6 +3,8 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import MobileElement.Diamond;
+import MobileElement.Stone;
 import MotionlessElement.Air;
 import contract.IModel;
 import entity.Map;
@@ -92,6 +94,19 @@ public final class Model extends Observable implements IModel {
 		}
 		 this.setChanged();
          this.notifyObservers();
+	}
+	
+	public void checkGravity() {
+		for (int j = 0; j < map.getHeightMap(); j++) {
+			for (int i = 0; i < map.getWidthMap(); i++) {
+				if ((this.map.getEntityMap()[i][j] instanceof Stone || this.map.getEntityMap()[i][j] instanceof Diamond) && this.map.getEntityMap()[i][j+1] instanceof Air) {
+					this.map.getEntityMap()[i][j+1] = this.map.getEntityMap()[i][j];
+					this.map.getEntityMap()[i][j] = new Air(i,j);
+					this.setChanged();
+			        this.notifyObservers();
+				}
+			}
+		}
 	}
 
 }
