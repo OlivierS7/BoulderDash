@@ -34,13 +34,12 @@ public class Map extends Entity{
 		super();
 		this.setId(id);
 		this.setContent(message);
-		this.setCountdown(5);
+		this.setCountdown(200);
 		startTime = System.currentTimeMillis();
 		createMap();
 	}
 
 	public long getTimeSinceStart() {
-		System.out.println(System.currentTimeMillis() - this.startTime - 200.0);
         return System.currentTimeMillis() - this.startTime;
     }
 	
