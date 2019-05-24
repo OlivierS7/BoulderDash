@@ -24,25 +24,25 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model) throws HeadlessException {
-		this.buildViewFrame(model);
+		this.buildViewFrame(model, 0);
 	}
 
 	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model, final GraphicsConfiguration gc) {
 		super(gc);
-		this.buildViewFrame(model);
+		this.buildViewFrame(model, 0);
 	}
 
 	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model, final String title) throws HeadlessException {
 		super(title);
-		this.buildViewFrame(model);
+		this.buildViewFrame(model, 0);
 	}
 
 	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model, final String title, final GraphicsConfiguration gc) {
 		super(title, gc);
-		this.buildViewFrame(model);
+		this.buildViewFrame(model, 0);
 	}
 
 	//Get the Controller
@@ -66,16 +66,27 @@ class ViewFrame extends JFrame implements KeyListener {
 	}
 
 	//Build the ViewFrame
-	private void buildViewFrame(final IModel model) {
-		this.setModel(model);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
-		this.addKeyListener(this);
-		this.setContentPane(new ViewPanel(this));
-		//this.setSize(1605, 910);
-		this.setSize(1600, 950);
-		this.setTitle("BoulderDash");
-		this.setLocationRelativeTo(null);
+	public void buildViewFrame(final IModel model, int nb) {
+		if (nb == 0) {
+			this.setModel(model);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setResizable(false);
+			this.addKeyListener(this);
+			this.setContentPane(new ViewPanel(this));
+			this.setSize(1600, 950);
+			this.setTitle("BoulderDash");
+			this.setLocationRelativeTo(null);
+		} else if (nb == 1) {
+			this.setModel(model);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setResizable(false);
+			this.addKeyListener(this);
+			this.setContentPane(new ViewPanel(this));
+			this.setSize(0, 0);
+			this.setTitle("BoulderDash");
+			this.setLocationRelativeTo(null);
+		}
+		
 	}
 
 	//Method to print message
