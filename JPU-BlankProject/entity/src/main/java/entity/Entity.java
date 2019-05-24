@@ -34,7 +34,7 @@ public abstract class Entity {
 		return this.sprite;
 	}
 
-	private void setSprite(final Sprite sprite) {
+	public void setSprite(final Sprite sprite) {
 		this.sprite = sprite;
 	}
 	

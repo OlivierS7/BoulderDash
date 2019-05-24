@@ -110,6 +110,7 @@ public class Map extends Entity{
 	public void moveUp() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY()-1);
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX(), getPlayer().getY()-1);
+		getPlayer().updateSpritePlayer('Z');
 		if (!collision) {
 				getEntityMap()[getPlayer().getX()][getPlayer().getY()-1] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
 				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(),getPlayer().getY());
@@ -127,6 +128,7 @@ public class Map extends Entity{
 	public void moveDown() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY()+1);
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX(), getPlayer().getY()+1);
+		getPlayer().updateSpritePlayer('S');
 		if (!collision) {
 				getEntityMap()[getPlayer().getX()][getPlayer().getY()+1] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
 				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(),getPlayer().getY());
@@ -141,6 +143,7 @@ public class Map extends Entity{
 	public void moveLeft() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX()-1, getPlayer().getY());
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX()-1, getPlayer().getY());
+		getPlayer().updateSpritePlayer('Q');
 		if (!collision) {
 				getEntityMap()[getPlayer().getX()-1][getPlayer().getY()] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
 				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(),getPlayer().getY());
@@ -155,6 +158,7 @@ public class Map extends Entity{
 	public void moveRight() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX()+1, getPlayer().getY());
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX()+1, getPlayer().getY());
+		getPlayer().updateSpritePlayer('D');
 		if (!collision) {
 				getEntityMap()[getPlayer().getX()+1][getPlayer().getY()] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
 		        getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(),getPlayer().getY());
