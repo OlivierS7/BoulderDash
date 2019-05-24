@@ -29,7 +29,18 @@ public class CollisionsHandler {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-				}
+				} else if (this.map.getEntityMap()[i][j] instanceof Stone && this.map.getEntityMap()[i][j+1] instanceof Stone
+                        && this.map.getEntityMap()[i-1][j] instanceof Air && this.map.getEntityMap()[i-1][j+1] instanceof Air ) {
+                    
+                    this.map.getEntityMap()[i-1][j+1] = this.map.getEntityMap()[i][j];
+                    this.map.getEntityMap()[i][j] = new Air(i,j);
+    
+                } else if (this.map.getEntityMap()[i][j] instanceof Stone && this.map.getEntityMap()[i][j+1] instanceof Stone
+                        && this.map.getEntityMap()[i+1][j] instanceof Air && this.map.getEntityMap()[i+1][j+1] instanceof Air ) {
+                    
+                    this.map.getEntityMap()[i+1][j+1] = this.map.getEntityMap()[i][j];
+                    this.map.getEntityMap()[i][j] = new Air(i,j);
+                }
 			}
 		}
 	}
