@@ -25,7 +25,9 @@ public class Map extends Entity{
 	private Entity[][] mapEntity;
 	
 	private int count = 0;
-
+	
+	private int countdown = 200;
+	
 	public Map(final int id,  final String message) {
 		super();
 		this.setId(id);
@@ -112,6 +114,14 @@ public class Map extends Entity{
 			return false;
 		}
 	}
+	
+	public void Countdown() {
+        this.countdown = 200;
+    }
+
+    public int getCountdown() {
+        return this.countdown;
+    }
 	
 	public boolean moveUp() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY()-1);

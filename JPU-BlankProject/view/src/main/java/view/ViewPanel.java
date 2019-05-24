@@ -106,6 +106,7 @@ class ViewPanel extends JPanel implements Observer {
         graphics.drawImage(this.Clock, 965, 10, this);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 18));
         graphics.drawString(": " + String.valueOf(this.viewFrame.getModel().getMap().getCount()), 550, 28);
+        graphics.drawString(": " + String.valueOf(this.viewFrame.getModel().getMap().getCountdown()-this.viewFrame.getModel().getTimeSinceStart()/1000), 995, 28);
         if (this.viewFrame.getModel().isWin()) {
         	if(isWin) {
         		this.isWin = false;

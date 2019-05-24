@@ -45,4 +45,6 @@ public interface IModel {
 	boolean isWin();
 	
 	void setWin(boolean isWin);
+	
+	public long getTimeSinceStart();
 }

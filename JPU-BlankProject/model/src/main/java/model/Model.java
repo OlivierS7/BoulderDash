@@ -17,13 +17,19 @@ public final class Model extends Observable implements IModel {
 	private Map map;
 	boolean isWin = false;
 	CollisionsHandler collisionHandler;
+	private long startTime;
 	
 	//Constructor of model
 	public Model() {
 		this.map = new Map();
 		this.collisionHandler = new CollisionsHandler(getMap());
+		startTime = System.currentTimeMillis();
 	}
-
+	
+	public long getTimeSinceStart() {
+        return System.currentTimeMillis() - startTime;
+    }
+	
 	//Get the map
 	public Map getMap() {
 		return this.map;
