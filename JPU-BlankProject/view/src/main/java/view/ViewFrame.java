@@ -131,7 +131,8 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setResizable(false);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(700, 700);
+		//this.setSize(1605, 910);
+		this.setSize(1600, 950);
 		this.setTitle("BoulderDash");
 		this.setLocationRelativeTo(null);
 	}
@@ -147,7 +148,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	}
 	
 	public void keyTyped(final KeyEvent e) {
-
+		
 	}
 
 	/*
@@ -156,7 +157,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public void keyPressed(final KeyEvent e) {
-		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+		
 	}
 
 	/*
@@ -165,6 +166,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(final KeyEvent e) {
-
+		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
 }

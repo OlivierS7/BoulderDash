@@ -26,6 +26,8 @@ public interface IModel {
 	 * @return 
 	 */
 	void loadMap(String code);
+	
+	void movePlayer(char c);
 
 	/**
 	 * Gets the observable.

@@ -38,7 +38,7 @@ public final class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		this.view.printMessage("Bienvenue dans le jeu BoulderDash");
+		this.view.printMessage("Bienvenue dans le jeu BoulderDash\n Choisir la map : 1, 2, 3, 4 ou 5");
 	}
 
 	/**
@@ -88,6 +88,18 @@ public final class Controller implements IController {
 				break;
 			case Map5:
 				this.model.loadMap("5");
+				break;
+			case Z:
+				this.model.movePlayer('Z');
+				break;
+			case Q:
+				this.model.movePlayer('Q');
+				break;
+			case S:
+				this.model.movePlayer('S');
+				break;
+			case D:
+				this.model.movePlayer('D');
 				break;
 			default:
 				this.model.loadMap("1");

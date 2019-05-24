@@ -3,6 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import MotionlessElement.Air;
 import contract.IModel;
 import entity.Map;
 
@@ -24,10 +25,10 @@ public final class Model extends Observable implements IModel {
 	}
 
 	/**
-     * Gets the hello world.
-     *
-     * @return the hello world
-     */
+	 * Gets the hello world.
+	 *
+	 * @return the hello world
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -38,23 +39,21 @@ public final class Model extends Observable implements IModel {
 	}
 
 	/**
-     * Sets the hello world.
-     *
-     * @param helloWorld
-     *            the new hello world
-     */
+	 * Sets the hello world.
+	 *
+	 * @param helloWorld the new hello world
+	 */
 	private void setMap(final Map map) {
 		this.map = map;
 		this.setChanged();
 		this.notifyObservers();
 	}
 
-
 	/**
-     * Gets the observable.
-     *
-     * @return the observable
-     */
+	 * Gets the observable.
+	 *
+	 * @return the observable
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -69,9 +68,30 @@ public final class Model extends Observable implements IModel {
 		try {
 			final DAOMap daoMap = new DAOMap(DBConnection.getInstance().getConnection());
 			this.setMap(daoMap.find(code));
-
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
+	public void movePlayer(char character) {
+		switch (character) {
+		case 'Z':
+			this.map.moveUp();
+            break;
+		case 'Q':
+			this.map.moveLeft();
+			break;
+		case 'S':
+			this.map.moveDown();
+			break;
+		case 'D':
+			this.map.moveRight();
+			break;
+		default:
+			break;
+		}
+		 this.setChanged();
+         this.notifyObservers();
+	}
+
 }

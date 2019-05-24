@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -23,6 +24,8 @@ class ViewPanel extends JPanel implements Observer {
 	private ViewFrame					viewFrame;
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
+	
+	Image[] image;
 
 	/**
 	 * Instantiates a new view panel.
@@ -63,6 +66,17 @@ class ViewPanel extends JPanel implements Observer {
 		this.repaint();
 	}
 
+	
+	public Image[] readImage() {
+		this.image = new Image[2];
+		try {
+			this.image[0] = ImageIO.read(new File("sprite/Contour.png"));
+			this.image[1] = ImageIO.read(new File("sprite/LittleDiamond.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return this.image;
+	}
 	/*
 	 * (non-Javadoc)
 	 *
@@ -70,24 +84,20 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-//		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-//		graphics.drawString(this.getViewFrame().getModel().getMap().getContent(), 10, 20);
+		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+		this.readImage();
         Entity[][] entity = viewFrame.getModel().getMap().getEntityMap();
         for(int x = 0; x <this.viewFrame.getModel().getMap().getWidthMap(); x++) {
             for(int y=0; y < this.viewFrame.getModel().getMap().getHeightMap(); y++) {
                 if (entity[x][y] != null) {
-                	graphics.drawImage(entity[x][y].getSprite().getImage(), x*16, y*16, this);      
-				}
-                          
-                
+                	graphics.drawImage(entity[x][y].getSprite().getImage(), x*40, 45 + y*40, this);      
+				}               
             }
-            
-            
         }
-
+        graphics.drawImage(this.image[0], 500, 0, this);
+        graphics.drawImage(this.image[0], 950, 0, this);
+        graphics.drawImage(this.image[1], 525, 10, this);
+        graphics.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        graphics.drawString(": " + String.valueOf(this.viewFrame.getModel().getMap().getCount()), 550, 28);
 	}
-
-	public void setOnTheMap(char finalCharMap, int x, int y) {
-		//this.mapEntity[x][y] = finalCharMap;
-	} 
 }

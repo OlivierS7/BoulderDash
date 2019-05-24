@@ -29,64 +29,6 @@ class DAOMap extends DAOEntity<Map> {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see model.DAOEntity#create(model.Entity)
-	 */
-	@Override
-	public boolean create(final Map entity) {
-		// Not implemented
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#delete(model.Entity)
-	 */
-	@Override
-	public boolean delete(final Map entity) {
-		// Not implemented
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#update(model.Entity)
-	 */
-	@Override
-	public boolean update(final Map entity) {
-		// Not implemented
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#find(int)
-	 */
-//	@Override
-//	public Map find(final int id) {
-//		Map helloWorld = new Map();
-//
-//		try {
-//			final String sql = "{call levelById(?)}";
-//			final CallableStatement call = this.getConnection().prepareCall(sql);
-//			call.setInt(1, id);
-//			call.execute();
-//			final ResultSet resultSet = call.getResultSet();
-//			if (resultSet.first()) {
-//				helloWorld = new Map(id, resultSet.getString("code"), resultSet.getString("message"));
-//			}
-//			return helloWorld;
-//		} catch (final SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return null;
-//	}
-
-	/*
-	 * (non-Javadoc)
-	 *
 	 * @see model.DAOEntity#find(java.lang.String)
 	 */
 	@Override

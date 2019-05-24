@@ -50,7 +50,6 @@ public class Sprite {
      *             Signals that an I/O exception has occurred.
      */
     public final void loadImage() throws IOException {
-    	System.out.println(this.getImageName());
         this.setImage(ImageIO.read(new File("sprite/" + this.getImageName())));
     }
 

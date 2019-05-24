@@ -23,6 +23,8 @@ public class Map extends Entity{
 	private String	content;
 	
 	private Entity[][] mapEntity;
+	
+	private int count = 0;
 
 	public Map(final int id,  final String message) {
 		super();
@@ -34,11 +36,6 @@ public class Map extends Entity{
 
 	public Map() {
 		this(1, "");
-	}
-
-	public Map(String content) {
-		super();
-		this.setContent(content);
 	}
 
 	public int getId() {
@@ -59,7 +56,6 @@ public class Map extends Entity{
 		return map.length;
 	}
 	
-	
 	public String getContent() {
 		return this.content;
 	}
@@ -72,11 +68,106 @@ public class Map extends Entity{
 		return this.mapEntity;
 	}
 	
+	public Player getPlayer() {
+		Entity[][] entity = this.getEntityMap();
+		for (int y = 0; y < getHeightMap(); y++) {
+            for (int x = 0; x < getWidthMap(); x++) {
+                if (entity[x][y] instanceof Player) {
+                	return (Player) entity[x][y];
+                }
+            }
+        }
+		return null;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	public boolean isCollision(Entity[][] playerPos, int x, int y) {
+		if(playerPos[x][y] instanceof Stone) {
+            return true;
+        } else if(playerPos[x][y] instanceof Wall) {
+        	return true;
+        } else {
+            return false;
+        }
+	}
+	
+	public boolean isDiamond(Entity[][] playerPos, int x, int y) {
+		if(playerPos[x][y] instanceof Diamond) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void moveUp() {
+		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY()-1);
+		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX(), getPlayer().getY()-1);
+		if (!collision) {
+				getEntityMap()[getPlayer().getX()][getPlayer().getY()-1] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
+				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(),getPlayer().getY());
+				getPlayer().setY(getPlayer().getY()-1);
+				if (isDiamond) {
+					setCount(getCount() + 1);
+					System.out.println(count);
+				}
+		} else {}
+	}
+	
+
+
+
+	public void moveDown() {
+		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY()+1);
+		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX(), getPlayer().getY()+1);
+		if (!collision) {
+				getEntityMap()[getPlayer().getX()][getPlayer().getY()+1] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
+				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(),getPlayer().getY());
+				getPlayer().setY(getPlayer().getY()+1);
+				if (isDiamond) {
+					setCount(getCount() + 1);
+					System.out.println(count);
+				}
+		} else {}
+	}
+	
+	public void moveLeft() {
+		boolean collision = isCollision(getEntityMap(), getPlayer().getX()-1, getPlayer().getY());
+		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX()-1, getPlayer().getY());
+		if (!collision) {
+				getEntityMap()[getPlayer().getX()-1][getPlayer().getY()] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
+				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(),getPlayer().getY());
+				getPlayer().setX(getPlayer().getX()-1);
+				if (isDiamond) {
+					setCount(getCount() + 1);
+					System.out.println(count);
+				}
+		} else {}
+	}
+	
+	public void moveRight() {
+		boolean collision = isCollision(getEntityMap(), getPlayer().getX()+1, getPlayer().getY());
+		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX()+1, getPlayer().getY());
+		if (!collision) {
+				getEntityMap()[getPlayer().getX()+1][getPlayer().getY()] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
+		        getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(),getPlayer().getY());
+		        getPlayer().setX(getPlayer().getX()+1);
+		        if (isDiamond) {
+					setCount(getCount() + 1);
+					System.out.println(count);
+				}
+		} else {}
+	}
+	
 	public void createMap() {
-		String map = this.getContent();
-		System.out.println(map);
-		System.out.println(getHeightMap());
-		System.out.println(getWidthMap());
+		String map = this.getContent(); //Loading map
 		if (getHeightMap() >= 1 && getWidthMap() >= 1) {
 			this.mapEntity = new Entity[this.getWidthMap()][this.getHeightMap()];
 			for (int y = 0; y < getHeightMap(); y++) {

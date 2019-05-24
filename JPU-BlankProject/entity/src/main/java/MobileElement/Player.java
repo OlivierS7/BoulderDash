@@ -21,4 +21,5 @@ public class Player extends MobileElement {
 		super(sprite, x, y);
 	}
 
+
 }
