@@ -102,7 +102,6 @@ public final class Controller implements IController {
 				this.model.movePlayer('D');
 				break;
 			default:
-				this.model.loadMap("1");
 				break;
 		}
 	}
