@@ -18,22 +18,18 @@ class DBProperties extends Properties {
 	private final static String	PROPERTIES_FILE_NAME	= "model.properties";
 
 	/** The url. */
-	private String							url										= "jdbc:mysql://localhost:3306/boulderdash?autoReconnect=true&useSSL=false";
+	private String url = "jdbc:mysql://localhost:3306/boulderdash?autoReconnect=true&useSSL=false";
 
 	/** The login. */
-	private String							login									= "root";
+	private String login = "root";
 
 	/** The password. */
-	private String							password							= "";
-
-	/**
-	 * Instantiates a new DB properties.
-	 */
+	private String password = "";
+	
+	//Instantiates a new DB properties.
 	public DBProperties() {
 		InputStream inputStream;
-
 		inputStream = this.getClass().getClassLoader().getResourceAsStream(DBProperties.PROPERTIES_FILE_NAME);
-
 		if (inputStream != null) {
 			try {
 				this.load(inputStream);
@@ -46,59 +42,32 @@ class DBProperties extends Properties {
 		}
 	}
 
-	/**
-	 * Gets the url.
-	 *
-	 * @return the url
-	 */
+	//Get the URL
 	public String getUrl() {
 		return this.url;
 	}
 
-	/**
-	 * Sets the url.
-	 *
-	 * @param url
-	 *          the new url
-	 */
+	//Set the URL
 	private void setUrl(final String url) {
 		this.url = url;
 	}
 
-	/**
-	 * Gets the login.
-	 *
-	 * @return the login
-	 */
+	//Get the login
 	public String getLogin() {
 		return this.login;
 	}
 
-	/**
-	 * Sets the login.
-	 *
-	 * @param login
-	 *          the new login
-	 */
+	//Set the login
 	private void setLogin(final String login) {
 		this.login = login;
 	}
 
-	/**
-	 * Gets the password.
-	 *
-	 * @return the password
-	 */
+	//Get the password
 	public String getPassword() {
 		return this.password;
 	}
 
-	/**
-	 * Sets the password.
-	 *
-	 * @param password
-	 *          the new password
-	 */
+	//Set the password
 	private void setPassword(final String password) {
 		this.password = password;
 	}

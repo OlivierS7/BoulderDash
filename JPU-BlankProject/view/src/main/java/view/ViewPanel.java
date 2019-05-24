@@ -27,6 +27,7 @@ class ViewPanel extends JPanel implements Observer {
 	
 	Image[] image;
 
+	boolean isWin = true;
 	/**
 	 * Instantiates a new view panel.
 	 *
@@ -87,7 +88,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		this.readImage();
         Entity[][] entity = viewFrame.getModel().getMap().getEntityMap();
-        this.viewFrame.getModel().checkGravity();
+        this.viewFrame.getModel().loop();
         for(int x = 0; x <this.viewFrame.getModel().getMap().getWidthMap(); x++) {
             for(int y=0; y < this.viewFrame.getModel().getMap().getHeightMap(); y++) {
                 if (entity[x][y] != null) {
@@ -100,5 +101,12 @@ class ViewPanel extends JPanel implements Observer {
         graphics.drawImage(this.image[1], 525, 10, this);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 18));
         graphics.drawString(": " + String.valueOf(this.viewFrame.getModel().getMap().getCount()), 550, 28);
+        if (this.viewFrame.getModel().isWin()) {
+        	if(isWin) {
+        		this.isWin = false;
+        		this.viewFrame.printMessage(this.viewFrame.getModel().getWinMessage());
+        	}
+		}
+        
 	}
 }

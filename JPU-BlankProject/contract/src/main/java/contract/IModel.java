@@ -29,7 +29,9 @@ public interface IModel {
 	
 	void movePlayer(char c);
 	
-	void checkGravity();
+	void loop();
+	
+	//void checkGravity();
 
 	/**
 	 * Gets the observable.
@@ -37,4 +39,10 @@ public interface IModel {
 	 * @return the observable
 	 */
 	Observable getObservable();
+	
+	public String getWinMessage();
+	
+	boolean isWin();
+	
+	void setWin(boolean isWin);
 }

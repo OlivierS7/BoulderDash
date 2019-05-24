@@ -38,7 +38,11 @@ public final class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		this.view.printMessage("Bienvenue dans le jeu BoulderDash\n Choisir la map : 1, 2, 3, 4 ou 5");
+		this.view.printMessage("Welcome to our BoulderDash game !\n"
+				+ "The game's protagonist is called Rockford and this is your character.\n"
+				+ "You must dig through caves collecting diamonds (minimum 10) and reach the exit within a time limit,\n"
+				+ " while avoiding various types of dangerous creatures as well as obstacles like falling rocks and the constant danger of being crushed or trapped by an avalanche. \n\n"
+				+ "Please choose a map : 1, 2, 3, 4 or 5");
 	}
 
 	/**

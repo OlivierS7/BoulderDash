@@ -4,30 +4,22 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * The Class DBConnection.
- *
- * @author Jean-Aymeric Diet
- */
+
 final class DBConnection {
 	/** The instance. */
-	private static DBConnection	INSTANCE	= null;
+	private static DBConnection	INSTANCE = null;
 
 	/** The connection. */
-	private Connection					connection;
+	private Connection connection;
 
-	/**
-	 * Instantiates a new DB connection.
-	 */
+	//Instantiates a new DB connection.
 	private DBConnection() {
 		this.open();
 	}
 
-	/**
-	 * Gets the single instance of DBConnection.
-	 *
-	 * @return single instance of DBConnection
-	 */
+
+	//Gets the single instance of DBConnection.
+	//return single instance of DBConnection
 	public static synchronized DBConnection getInstance() {
 		if (DBConnection.INSTANCE == null) {
 			DBConnection.INSTANCE = new DBConnection();
@@ -35,11 +27,7 @@ final class DBConnection {
 		return DBConnection.INSTANCE;
 	}
 
-	/**
-	 * Open.
-	 *
-	 * @return the boolean
-	 */
+	//Open the connection
 	private Boolean open() {
 		final DBProperties dbProperties = new DBProperties();
 		try {
@@ -53,11 +41,7 @@ final class DBConnection {
 		return true;
 	}
 
-	/**
-	 * Gets the connection.
-	 *
-	 * @return the connection
-	 */
+	//Get the connection
 	public Connection getConnection() {
 		return this.connection;
 	}

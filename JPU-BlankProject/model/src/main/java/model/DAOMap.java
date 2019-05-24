@@ -7,31 +7,15 @@ import java.sql.SQLException;
 
 import entity.Map;
 
-/**
- * The Class DAOHelloWorld.
- *
- * @author Jean-Aymeric Diet
- */
+
 class DAOMap extends DAOEntity<Map> {
 
-	/**
-	 * Instantiates a new DAO hello world.
-	 *
-	 * @param connection
-	 *          the connection
-	 * @throws SQLException
-	 *           the SQL exception
-	 */
+	//Instanciates a DAOmap
 	public DAOMap(final Connection connection) throws SQLException {
 		super(connection);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#find(java.lang.String)
-	 */
-	@Override
+	//Execute a stored procedure and return a map object
 	public Map find(final String code) {
 		Map map = new Map();
 		try {

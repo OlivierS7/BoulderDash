@@ -3,9 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
-import MobileElement.Diamond;
-import MobileElement.Stone;
-import MotionlessElement.Air;
+import collision.CollisionsHandler;
 import contract.IModel;
 import entity.Map;
 
@@ -16,55 +14,34 @@ import entity.Map;
  */
 public final class Model extends Observable implements IModel {
 
-	/** The helloWorld. */
 	private Map map;
-
-	/**
-	 * Instantiates a new model.
-	 */
+	boolean isWin = false;
+	CollisionsHandler collisionHandler;
+	
+	//Constructor of model
 	public Model() {
 		this.map = new Map();
+		this.collisionHandler = new CollisionsHandler(this);
 	}
 
-	/**
-	 * Gets the hello world.
-	 *
-	 * @return the hello world
-	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getMessage()
-	 */
+	//Get the map
 	public Map getMap() {
 		return this.map;
 	}
 
-	/**
-	 * Sets the hello world.
-	 *
-	 * @param helloWorld the new hello world
-	 */
+	//Set the map
 	private void setMap(final Map map) {
 		this.map = map;
 		this.setChanged();
 		this.notifyObservers();
 	}
 
-	/**
-	 * Gets the observable.
-	 *
-	 * @return the observable
-	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getObservable()
-	 */
+	//Get the observable
 	public Observable getObservable() {
 		return this;
 	}
 
+	//Load the map
 	@Override
 	public void loadMap(final String code) {
 		try {
@@ -75,38 +52,54 @@ public final class Model extends Observable implements IModel {
 		}
 	}
 
+	//Move the Player
 	public void movePlayer(char character) {
 		switch (character) {
 		case 'Z':
-			this.map.moveUp();
-            break;
+			this.isWin = this.map.moveUp();
+			break;
 		case 'Q':
-			this.map.moveLeft();
+			this.isWin = this.map.moveLeft();
 			break;
 		case 'S':
-			this.map.moveDown();
+			this.isWin = this.map.moveDown();
 			break;
 		case 'D':
-			this.map.moveRight();
+			this.isWin = this.map.moveRight();
 			break;
 		default:
 			break;
 		}
-		 this.setChanged();
-         this.notifyObservers();
-	}
-	
-	public void checkGravity() {
-		for (int j = 0; j < map.getHeightMap(); j++) {
-			for (int i = 0; i < map.getWidthMap(); i++) {
-				if ((this.map.getEntityMap()[i][j] instanceof Stone || this.map.getEntityMap()[i][j] instanceof Diamond) && this.map.getEntityMap()[i][j+1] instanceof Air) {
-					this.map.getEntityMap()[i][j+1] = this.map.getEntityMap()[i][j];
-					this.map.getEntityMap()[i][j] = new Air(i,j);
-					this.setChanged();
-			        this.notifyObservers();
-				}
-			}
-		}
+		this.setChanged();
+		this.notifyObservers();
 	}
 
+	//Get boolean isWin
+	public boolean isWin() {
+		return isWin;
+	}
+	//Set boolean isWin
+	public void setWin(boolean isWin) {
+		this.isWin = isWin;
+	}
+
+	//Get WinMessage
+	public String getWinMessage() {
+		return "Thanks you for playing at our game. We hope that you will come back soon ! =)\nRestart the game to play on another map !";
+	}
+
+	//A simple loop to verify collision
+	public void loop() {
+		this.collisionHandler.checkGravity();
+		this.viewNotify();
+	}
+	
+	//Notify the view to update visual
+	public void viewNotify() {
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	
+	
 }

@@ -5,47 +5,22 @@ import java.sql.SQLException;
 
 import entity.Entity;
 
-/**
- * The Class DAOEntity.
- *
- * @author Jean-Aymeric Diet
- *
- * @param <E>
- *          the element type
- */
 abstract class DAOEntity<E extends Entity> {
 
 	/** The connection. */
 	private final Connection connection;
 
-	/**
-	 * Instantiates a new DAO entity.
-	 *
-	 * @param connection
-	 *          the connection
-	 * @throws SQLException
-	 *           the SQL exception
-	 */
+	//Instanciates a new DAOEntity
 	public DAOEntity(final Connection connection) throws SQLException {
 		this.connection = connection;
 	}
 
-	/**
-	 * Gets the connection.
-	 *
-	 * @return the connection
-	 */
+	//Get the connection
 	protected Connection getConnection() {
 		return this.connection;
 	}
 
-	/**
-	 * Find.
-	 *
-	 * @param code
-	 *          the code
-	 * @return the e
-	 */
+	//Method use to execute stored procedure
 	public abstract E find(String code);
 
 }
