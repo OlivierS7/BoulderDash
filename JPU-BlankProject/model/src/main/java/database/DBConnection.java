@@ -1,11 +1,11 @@
-package model;
+package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-final class DBConnection {
+final public class DBConnection {
 	/** The instance. */
 	private static DBConnection	INSTANCE = null;
 

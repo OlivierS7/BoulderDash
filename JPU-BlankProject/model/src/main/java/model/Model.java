@@ -2,8 +2,8 @@ package model;
 
 import java.sql.SQLException;
 import java.util.Observable;
-
-import collision.CollisionsHandler;
+import database.*;
+import CollisionsHandler.CollisionsHandler;
 import contract.IModel;
 import entity.Map;
 
@@ -21,7 +21,7 @@ public final class Model extends Observable implements IModel {
 	//Constructor of model
 	public Model() {
 		this.map = new Map();
-		this.collisionHandler = new CollisionsHandler(this);
+		this.collisionHandler = new CollisionsHandler(getMap());
 	}
 
 	//Get the map
@@ -32,6 +32,7 @@ public final class Model extends Observable implements IModel {
 	//Set the map
 	private void setMap(final Map map) {
 		this.map = map;
+		this.collisionHandler = new CollisionsHandler(map);
 		this.setChanged();
 		this.notifyObservers();
 	}

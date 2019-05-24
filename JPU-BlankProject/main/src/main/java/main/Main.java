@@ -17,7 +17,7 @@ public abstract class Main {
         final Model model = new Model();
         final View view = new View(model);
         final Controller controller = new Controller(view, model);
-        //set the controller to the view
+        //Set the controller to the view
         view.setController(controller);
         //Pop-up display
         controller.control();

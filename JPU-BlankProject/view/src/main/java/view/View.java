@@ -9,21 +9,19 @@ import contract.IController;
 import contract.IModel;
 import contract.IView;
 
-/**
- * The Class View.
- *
- * @author Jean-Aymeric Diet
- */
+
 public final class View implements IView, Runnable {
 
 	/** The frame. */
 	private final ViewFrame viewFrame;
 
+	//Instanciates a view
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);
 		SwingUtilities.invokeLater(this);
 	}
 
+	//Method to return an order regarding key code
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
 			case KeyEvent.VK_NUMPAD1:
@@ -50,15 +48,17 @@ public final class View implements IView, Runnable {
 	}
 
 
+	//Method to print a message in a Pop-up
 	public void printMessage(final String message) {
 		this.viewFrame.printMessage(message);
 	}
 
-
+	//Method to display the frame
 	public void run() {
 		this.viewFrame.setVisible(true);
 	}
-
+	
+	//Set the controller
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
 	}

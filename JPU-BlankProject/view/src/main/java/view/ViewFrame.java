@@ -11,11 +11,6 @@ import javax.swing.JOptionPane;
 import contract.IController;
 import contract.IModel;
 
-/**
- * The Class ViewFrame.
- *
- * @author Jean-Aymeric Diet
- */
 class ViewFrame extends JFrame implements KeyListener {
 
 	/** The model. */
@@ -23,108 +18,54 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/** The controller. */
 	private IController				controller;
+	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
 
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @throws HeadlessException
-	 *           the headless exception
-	 */
+	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model) throws HeadlessException {
 		this.buildViewFrame(model);
 	}
 
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @param gc
-	 *          the gc
-	 */
+	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model, final GraphicsConfiguration gc) {
 		super(gc);
 		this.buildViewFrame(model);
 	}
 
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @param title
-	 *          the title
-	 * @throws HeadlessException
-	 *           the headless exception
-	 */
+	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model, final String title) throws HeadlessException {
 		super(title);
 		this.buildViewFrame(model);
 	}
 
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @param title
-	 *          the title
-	 * @param gc
-	 *          the gc
-	 */
+	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model, final String title, final GraphicsConfiguration gc) {
 		super(title, gc);
 		this.buildViewFrame(model);
 	}
 
-	/**
-	 * Gets the controller.
-	 *
-	 * @return the controller
-	 */
+	//Get the Controller
 	private IController getController() {
 		return this.controller;
 	}
 
-	/**
-	 * Sets the controller.
-	 *
-	 * @param controller
-	 *          the new controller
-	 */
+	//Set the Controller
 	protected void setController(final IController controller) {
 		this.controller = controller;
 	}
 
-	/**
-	 * Gets the model.
-	 *
-	 * @return the model
-	 */
+	//Get the Model
 	protected IModel getModel() {
 		return this.model;
 	}
 
-	/**
-	 * Sets the model.
-	 *
-	 * @param model
-	 *          the new model
-	 */
+	//Set the model
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
 
-	/**
-	 * Builds the view frame.
-	 *
-	 * @param model
-	 *          the model
-	 */
+	//Build the ViewFrame
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -137,12 +78,7 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setLocationRelativeTo(null);
 	}
 
-	/**
-	 * Prints the message.
-	 *
-	 * @param message
-	 *          the message
-	 */
+	//Method to print message
 	public void printMessage(final String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
@@ -151,20 +87,10 @@ class ViewFrame extends JFrame implements KeyListener {
 		
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
-	 */
 	public void keyPressed(final KeyEvent e) {
 		
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
-	 */
 	public void keyReleased(final KeyEvent e) {
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
