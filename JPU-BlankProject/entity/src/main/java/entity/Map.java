@@ -26,16 +26,24 @@ public class Map extends Entity{
 	
 	private int count = 0;
 	
-	private int countdown = 200;
+	private int countdown;
+	
+	private long startTime;
 	
 	public Map(final int id,  final String message) {
 		super();
 		this.setId(id);
 		this.setContent(message);
+		this.setCountdown(5);
+		startTime = System.currentTimeMillis();
 		createMap();
 	}
 
-
+	public long getTimeSinceStart() {
+		System.out.println(System.currentTimeMillis() - this.startTime - 200.0);
+        return System.currentTimeMillis() - this.startTime;
+    }
+	
 	public Map() {
 		this(1, "");
 	}
@@ -115,11 +123,19 @@ public class Map extends Entity{
 		}
 	}
 	
-	public void Countdown() {
-        this.countdown = 200;
-    }
+	public boolean isTime() {
+		if (getCountdown()*1000-getTimeSinceStart() < 0) {
+			return true;
+		}
+		return false;
+	}
 
-    public int getCountdown() {
+    public void setCountdown(int countdown) {
+		this.countdown = countdown;
+	}
+
+
+	public int getCountdown() {
         return this.countdown;
     }
 	

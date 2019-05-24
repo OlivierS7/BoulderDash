@@ -9,6 +9,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.imageio.ImageIO;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import entity.Entity;
@@ -107,6 +108,12 @@ class ViewPanel extends JPanel implements Observer {
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 18));
         graphics.drawString(": " + String.valueOf(this.viewFrame.getModel().getMap().getCount()), 550, 28);
         graphics.drawString(": " + String.valueOf(this.viewFrame.getModel().getMap().getCountdown()-this.viewFrame.getModel().getTimeSinceStart()/1000), 995, 28);
+        if (this.viewFrame.getModel().getIsTime()) {
+        	if(isWin) {
+        		this.isWin = false;
+        		this.viewFrame.printMessage(this.viewFrame.getModel().getLostMessage());
+        	}	
+		}
         if (this.viewFrame.getModel().isWin()) {
         	if(isWin) {
         		this.isWin = false;

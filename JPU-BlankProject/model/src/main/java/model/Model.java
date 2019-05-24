@@ -17,18 +17,13 @@ public final class Model extends Observable implements IModel {
 	private Map map;
 	boolean isWin = false;
 	CollisionsHandler collisionHandler;
-	private long startTime;
+	
 	
 	//Constructor of model
 	public Model() {
 		this.map = new Map();
 		this.collisionHandler = new CollisionsHandler(getMap());
-		startTime = System.currentTimeMillis();
 	}
-	
-	public long getTimeSinceStart() {
-        return System.currentTimeMillis() - startTime;
-    }
 	
 	//Get the map
 	public Map getMap() {
@@ -94,6 +89,10 @@ public final class Model extends Observable implements IModel {
 	public String getWinMessage() {
 		return "Thanks you for playing at our game. We hope that you will come back soon ! =)\nRestart the game to play on another map !";
 	}
+	
+	public String getLostMessage() {
+		return "Time run out... =(\nRestart the game to play on another map !";
+	}
 
 	//A simple loop to verify collision
 	public void loop() {
@@ -106,7 +105,15 @@ public final class Model extends Observable implements IModel {
 		this.setChanged();
 		this.notifyObservers();
 	}
+
+	@Override
+	public long getTimeSinceStart() {
+		return this.getMap().getTimeSinceStart();
+	}
 	
+	public boolean getIsTime() {
+		return this.getMap().isTime();
+	}
 	
 	
 }

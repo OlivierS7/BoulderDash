@@ -40,11 +40,15 @@ public interface IModel {
 	 */
 	Observable getObservable();
 	
-	public String getWinMessage();
+	String getWinMessage();
+	
+	String getLostMessage();
 	
 	boolean isWin();
 	
 	void setWin(boolean isWin);
 	
-	public long getTimeSinceStart();
+	long getTimeSinceStart();
+	
+	boolean getIsTime();
 }
