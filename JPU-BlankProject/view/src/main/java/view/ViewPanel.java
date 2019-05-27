@@ -16,7 +16,7 @@ import entity.Entity;
 class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
-	private ViewFrame					viewFrame;
+	private ViewFrame viewFrame;
 	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
@@ -92,7 +92,6 @@ class ViewPanel extends JPanel implements Observer {
 		this.readImageLittleDiamond();
 		this.readImageClock();
         Entity[][] entity = viewFrame.getModel().getMap().getEntityMap();
-        this.viewFrame.getModel().loop();
         for(int x = 0; x <this.viewFrame.getModel().getMap().getWidthMap(); x++) {
             for(int y=0; y < this.viewFrame.getModel().getMap().getHeightMap(); y++) {
                 if (entity[x][y] != null) {
@@ -108,7 +107,7 @@ class ViewPanel extends JPanel implements Observer {
         graphics.drawString(": " + String.valueOf(this.viewFrame.getModel().getMap().getCount()), 550, 28);
         graphics.drawString(": " + String.valueOf(this.viewFrame.getModel().getMap().getCountdown()-this.viewFrame.getModel().getTimeSinceStart()/1000), 995, 28);
         if (this.viewFrame.getModel().getIsTime()) {
-        	this.viewFrame.buildViewFrame(this.viewFrame.getModel(), 1);
+        	this.viewFrame.buildViewFrame(this.getViewFrame().getModel(), 1);
         	if(isWin) {
         		this.isWin = false;
         		this.viewFrame.printMessage(this.viewFrame.getModel().getLostMessage());

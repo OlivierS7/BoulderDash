@@ -21,5 +21,6 @@ public abstract class Main {
         view.setController(controller);
         //Pop-up display
         controller.control();
+        controller.play();
     }
 }

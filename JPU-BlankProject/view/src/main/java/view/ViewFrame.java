@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Component;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
@@ -81,10 +82,11 @@ class ViewFrame extends JFrame implements KeyListener {
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);
 			this.addKeyListener(this);
-			this.setContentPane(new ViewPanel(this));
-			this.setSize(0, 0);
+			this.setContentPane(new ViewPanelTime(this));
+			this.setSize(1600, 950);
 			this.setTitle("BoulderDash");
 			this.setLocationRelativeTo(null);
+			
 		}
 		
 	}

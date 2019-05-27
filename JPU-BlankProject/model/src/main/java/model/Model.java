@@ -56,24 +56,26 @@ public final class Model extends Observable implements IModel {
 
 	//Move the Player
 	public void movePlayer(char character) {
-		switch (character) {
-		case 'Z':
-			this.isWin = this.map.moveUp();
-			break;
-		case 'Q':
-			this.isWin = this.map.moveLeft();
-			break;
-		case 'S':
-			this.isWin = this.map.moveDown();
-			break;
-		case 'D':
-			this.isWin = this.map.moveRight();
-			break;
-		default:
-			break;
+		if (this.map.isPlayerAlive()) {
+			switch (character) {
+			case 'Z':
+				this.isWin = this.map.moveUp();
+				break;
+			case 'Q':
+				this.isWin = this.map.moveLeft();
+				break;
+			case 'S':
+				this.isWin = this.map.moveDown();
+				break;
+			case 'D':
+				this.isWin = this.map.moveRight();
+				break;
+			default:
+				break;
+			}
+			this.viewNotify();
 		}
-		this.setChanged();
-		this.notifyObservers();
+		
 	}
 
 	//Get boolean isWin
@@ -96,8 +98,17 @@ public final class Model extends Observable implements IModel {
 
 	//A simple loop to verify collision
 	public void loop() {
-		this.collisionHandler.checkGravity();
-		this.viewNotify();
+		
+		while(true) {
+			try {
+				this.collisionHandler.checkGravity();
+				this.viewNotify();
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 	
 	//Notify the view to update visual

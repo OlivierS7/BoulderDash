@@ -12,6 +12,8 @@ public class Player extends MobileElement {
 	static Sprite spriteLeft = new Sprite('P', "Left_Rockford.png");
 	static Sprite spriteRight = new Sprite('P', "Right_Rockford.png");
 
+	boolean isAlive;
+
 	static {
 		try {
 			spriteDown.loadImage();
@@ -54,46 +56,56 @@ public class Player extends MobileElement {
 
 	public Player(int x, int y) {
 		super(spriteDown, x, y);
+		this.isAlive = true;
 	}
 
 	public void updateSpritePlayer(char keyTyped) {
-		switch (keyTyped) {
-		case 'Z':
-			this.setSprite(Player.spriteUp);
+		
+			switch (keyTyped) {
+			case 'Z':
+				this.setSprite(Player.spriteUp);
 				try {
 					spriteUp.loadImage();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			break;
-		case 'Q':
-			this.setSprite(Player.spriteLeft);
-			try {
-				spriteLeft.loadImage();
-			} catch (IOException e) {
-				e.printStackTrace();
+				break;
+			case 'Q':
+				this.setSprite(Player.spriteLeft);
+				try {
+					spriteLeft.loadImage();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+			case 'S':
+				this.setSprite(Player.spriteDown);
+				try {
+					spriteDown.loadImage();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+			case 'D':
+				this.setSprite(Player.spriteRight);
+				try {
+					spriteRight.loadImage();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+			default:
+				break;
 			}
-			break;
-		case 'S':
-			this.setSprite(Player.spriteDown);
-			try {
-				spriteDown.loadImage();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			break;
-		case 'D':
-			this.setSprite(Player.spriteRight);
-			try {
-				spriteRight.loadImage();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			break;
-		default:
-			break;
-		}
+		
 	}
-	
+
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
 
 }

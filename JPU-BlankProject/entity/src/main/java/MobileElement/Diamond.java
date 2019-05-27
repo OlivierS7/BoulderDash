@@ -8,7 +8,25 @@ import entity.Sprite;
 public class Diamond extends MobileElement {
 
 	static Sprite sprite = new Sprite('D', "Diamond.png");
+	boolean isFallen;
+	int falling = 0;
 	
+	public int getFalling() {
+		return falling;
+	}
+
+	public void setFalling(int falling) {
+		this.falling = falling;
+	}
+
+	public boolean isFallen() {
+		return isFallen;
+	}
+
+	public void setFallen(boolean isFallen) {
+		this.isFallen = isFallen;
+	}
+
 	static {
 		try {
 			sprite.loadImage();

@@ -34,7 +34,7 @@ public class Map extends Entity{
 		super();
 		this.setId(id);
 		this.setContent(message);
-		this.setCountdown(200);
+		this.setCountdown(5);
 		startTime = System.currentTimeMillis();
 		createMap();
 	}
@@ -112,6 +112,10 @@ public class Map extends Entity{
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean isPlayerAlive() {
+		return this.getPlayer().isAlive();
 	}
 	
 	public boolean isWin(Entity[][] playerPos, int x, int y) {

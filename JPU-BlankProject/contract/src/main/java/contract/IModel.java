@@ -46,6 +46,8 @@ public interface IModel {
 	
 	boolean isWin();
 	
+	void viewNotify();
+	
 	void setWin(boolean isWin);
 	
 	long getTimeSinceStart();
