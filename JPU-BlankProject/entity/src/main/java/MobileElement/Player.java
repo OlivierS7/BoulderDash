@@ -12,7 +12,7 @@ public class Player extends MobileElement {
 	static Sprite spriteLeft = new Sprite('P', "Left_Rockford.png");
 	static Sprite spriteRight = new Sprite('P', "Right_Rockford.png");
 
-	boolean isAlive;
+	boolean isAlive = true;
 
 	static {
 		try {
@@ -56,7 +56,6 @@ public class Player extends MobileElement {
 
 	public Player(int x, int y) {
 		super(spriteDown, x, y);
-		this.isAlive = true;
 	}
 
 	public void updateSpritePlayer(char keyTyped) {

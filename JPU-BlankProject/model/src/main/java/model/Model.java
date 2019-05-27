@@ -92,8 +92,12 @@ public final class Model extends Observable implements IModel {
 		return "Thanks you for playing at our game. We hope that you will come back soon ! =)\nRestart the game to play on another map !";
 	}
 	
-	public String getLostMessage() {
+	public String getLostTimeMessage() {
 		return "Time run out... =(\nRestart the game to play on another map !";
+	}
+	
+	public String getLostDeadMessage() {
+		return "You're dead !!\n Restart the game to try again !";
 	}
 
 	//A simple loop to verify collision
@@ -127,6 +131,10 @@ public final class Model extends Observable implements IModel {
 	
 	public boolean getIsWin() {
 		return this.getMap().isWin();
+	}
+	
+	public boolean getIsAlive() {
+		return this.getMap().isPlayerAlive();		
 	}
 	
 }

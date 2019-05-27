@@ -115,12 +115,13 @@ class ViewPanel extends JPanel implements Observer {
 	}
 	
 	private void verifyWinOrLose(Graphics graphics) {
+		Player playerPos = this.viewFrame.getModel().getMap().getPlayer();
 		if (this.viewFrame.getModel().getIsTime()) {
         	this.viewFrame.buildViewFrame(this.getViewFrame().getModel(), 1);
         	this.viewFrame.revalidate(); //To validate the new JPanel
         	if(isWin) {
         		this.isWin = false;
-        		this.viewFrame.printMessage(this.viewFrame.getModel().getLostMessage());
+        		this.viewFrame.printMessage(this.viewFrame.getModel().getLostTimeMessage());
         	}	
 		}
         if (this.viewFrame.getModel().getIsWin()) {
@@ -130,6 +131,16 @@ class ViewPanel extends JPanel implements Observer {
         		this.isWin = false;
         		this.viewFrame.printMessage(this.viewFrame.getModel().getWinMessage());
         	}
+        }
+        if (playerPos != null) {
+        	if (!this.viewFrame.getModel().getIsAlive()) {
+                this.viewFrame.buildViewFrame(this.getViewFrame().getModel(), 1);
+                this.viewFrame.revalidate(); //To validate the new JPanel
+                if(isWin) {
+                	this.isWin = false;
+                	this.viewFrame.printMessage(this.viewFrame.getModel().getLostDeadMessage());
+                }
+    		}
 		}
 	}
 

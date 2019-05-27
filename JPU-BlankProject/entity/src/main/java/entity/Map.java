@@ -24,7 +24,7 @@ public class Map extends Entity{
 	
 	private Entity[][] mapEntity;
 	
-	private int count = 10;
+	private int count = 0;
 	
 	private int countdown;
 	

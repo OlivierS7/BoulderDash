@@ -78,7 +78,7 @@ public class CollisionsHandler {
 						((Stone) entity[i][j]).setFallen(false);
 						((Stone) entity[i][j]).setFalling(0);
 					} else if (entity[i][j] instanceof Diamond) {
-						((Diamond) entity[i][j]).setFallen(true);
+						((Diamond) entity[i][j]).setFallen(false);
 						((Diamond) entity[i][j]).setFalling(0);
 					}
 

@@ -42,11 +42,15 @@ public interface IModel {
 	
 	String getWinMessage();
 	
-	String getLostMessage();
+	String getLostTimeMessage();
+	
+	String getLostDeadMessage();
 	
 	boolean isWin();
 	
 	boolean getIsWin();
+	
+	boolean getIsAlive();
 	
 	void viewNotify();
 	

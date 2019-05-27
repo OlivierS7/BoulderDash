@@ -37,6 +37,7 @@ public class Stone extends MobileElement {
 	
 	public Stone(int x, int y) {
 		super(sprite, x, y);
+		this.isFallen = false;
 	}
 
 }

@@ -37,6 +37,7 @@ public class Diamond extends MobileElement {
 	
 	public Diamond(int x, int y) {
 		super(sprite, x, y);
+		this.isFallen = false;
 	}
 
 }
