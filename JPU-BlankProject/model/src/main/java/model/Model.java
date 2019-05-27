@@ -98,7 +98,6 @@ public final class Model extends Observable implements IModel {
 
 	//A simple loop to verify collision
 	public void loop() {
-		
 		while(true) {
 			try {
 				this.collisionHandler.checkGravity();
@@ -126,5 +125,8 @@ public final class Model extends Observable implements IModel {
 		return this.getMap().isTime();
 	}
 	
+	public boolean getIsWin() {
+		return this.getMap().isWin();
+	}
 	
 }

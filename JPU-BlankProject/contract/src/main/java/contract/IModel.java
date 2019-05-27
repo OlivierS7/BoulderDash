@@ -46,6 +46,8 @@ public interface IModel {
 	
 	boolean isWin();
 	
+	boolean getIsWin();
+	
 	void viewNotify();
 	
 	void setWin(boolean isWin);

@@ -24,17 +24,19 @@ public class Map extends Entity{
 	
 	private Entity[][] mapEntity;
 	
-	private int count = 0;
+	private int count = 10;
 	
 	private int countdown;
 	
 	private long startTime;
 	
+	private boolean isWin;
+
 	public Map(final int id,  final String message) {
 		super();
 		this.setId(id);
 		this.setContent(message);
-		this.setCountdown(5);
+		this.setCountdown(200);
 		startTime = System.currentTimeMillis();
 		createMap();
 	}
@@ -73,6 +75,14 @@ public class Map extends Entity{
 		this.content = message;
 	}
 	
+	public boolean isWin() {
+		return isWin;
+	}
+
+	public void setWin(boolean isWin) {
+		this.isWin = isWin;
+	}
+	
 	public Entity[][] getEntityMap(){
 		return this.mapEntity;
 	}
@@ -100,7 +110,7 @@ public class Map extends Entity{
 
 	public boolean isCollision(Entity[][] playerPos, int x, int y) {
 		if(playerPos[x][y] instanceof Stone || playerPos[x][y] instanceof Wall || playerPos[x][y] instanceof Exit) {
-            return true; 
+			return true; 
         } else {
             return false;
         }
@@ -120,6 +130,7 @@ public class Map extends Entity{
 	
 	public boolean isWin(Entity[][] playerPos, int x, int y) {
 		if (playerPos[x][y] instanceof Exit && getCount() >= 10) {
+			this.setWin(true);
 			return true;
 		} else {
 			return false;

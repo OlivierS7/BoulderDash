@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -11,15 +12,15 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 
-public class ViewPanelTime extends JPanel implements Observer {
+public class ViewPanelWin extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 5784682934133773896L;
 
 	private ViewFrame viewFrame;
 	
-	Image Lose;
+	Image Win;
 	
-	public ViewPanelTime(final ViewFrame viewFrame) {
+	public ViewPanelWin(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
 	}
@@ -42,17 +43,18 @@ public class ViewPanelTime extends JPanel implements Observer {
 		 //Method to load Image
 	    public Image readImageLose() {
 	        try {
-	            this.Lose = ImageIO.read(new File("sprite/Lose.png"));
+	            this.Win = ImageIO.read(new File("sprite/Win.png"));
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-	        return this.Lose;
+	        return this.Win;
 	    }
 		
 		protected void paintComponent(final Graphics graphics) {
 			graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 			readImageLose();
-			graphics.drawImage(this.Lose, -150, 0, this);
+			this.setBackground(Color.BLACK);
+			graphics.drawImage(this.Win, 500, 200, this);
 		}
 }
 

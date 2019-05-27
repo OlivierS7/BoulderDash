@@ -86,9 +86,16 @@ class ViewFrame extends JFrame implements KeyListener {
 			this.setSize(1600, 950);
 			this.setTitle("BoulderDash");
 			this.setLocationRelativeTo(null);
-			
+		} else if (nb == 2) {
+			this.setModel(model);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setResizable(false);
+			this.addKeyListener(this);
+			this.setContentPane(new ViewPanelWin(this));
+			this.setSize(1600, 950);
+			this.setTitle("BoulderDash");
+			this.setLocationRelativeTo(null);
 		}
-		
 	}
 
 	//Method to print message

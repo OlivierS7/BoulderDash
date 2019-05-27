@@ -27,7 +27,6 @@ public class CollisionsHandler {
 						&& this.map.getEntityMap()[i][j + 1] instanceof Air) {
 					if (entity[i][j] instanceof Stone) {
 						((Stone) entity[i][j]).setFallen(true);
-						System.out.println(((Stone) entity[i][j]).isFallen());
 						((Stone) entity[i][j]).setFalling(((Stone) entity[i][j]).getFalling() + 1);
 					} else if (entity[i][j] instanceof Diamond) {
 						((Diamond) entity[i][j]).setFallen(true);
