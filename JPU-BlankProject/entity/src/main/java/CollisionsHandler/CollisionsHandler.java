@@ -4,6 +4,7 @@ import MobileElement.Diamond;
 import MobileElement.Player;
 import MobileElement.Stone;
 import MotionlessElement.Air;
+import MotionlessElement.Dirt;
 import MotionlessElement.Exit;
 import MotionlessElement.Wall;
 import entity.Entity;
@@ -94,7 +95,15 @@ public class CollisionsHandler {
 			return false;
 		}
 	}
-
+	
+	public boolean isEnnemyCollision(Entity[][] EnnemyPos, int x, int y) {
+        if(EnnemyPos[x][y] instanceof Stone || EnnemyPos[x][y] instanceof Dirt || EnnemyPos[x][y] instanceof Wall || EnnemyPos[x][y] instanceof Diamond || EnnemyPos[x][y] instanceof Exit) {
+            return true; 
+        } else {
+            return false;
+        }
+    }
+	
 	public boolean isDiamond(Entity[][] playerPos, int x, int y) {
 		if (playerPos[x][y] instanceof Diamond) {
 			return true;

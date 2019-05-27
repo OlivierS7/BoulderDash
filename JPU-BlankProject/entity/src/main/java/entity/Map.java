@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.ArrayList;
+
 import MobileElement.Diamond;
 import MobileElement.Ennemy;
 import MobileElement.Player;
@@ -14,7 +16,7 @@ import MotionlessElement.Wall;
  *
  * @author Jean-Aymeric Diet
  */
-public class Map extends Entity{
+public class Map extends Entity implements Runnable {
 
 	/** The id. */
 	private int	id;
@@ -153,6 +155,111 @@ public class Map extends Entity{
         return this.countdown;
     }
 	
+	public ArrayList<Ennemy> getEnnemy() {
+        Entity[][] entity = this.getEntityMap();
+        ArrayList<Ennemy> ennemy = new ArrayList<Ennemy>();
+        for (int y = 0; y < getHeightMap(); y++) {
+            for (int x = 0; x < getWidthMap(); x++) {
+                if (entity[x][y] instanceof Ennemy) {
+                    ennemy.add((Ennemy) entity[x][y]);
+                }
+            }
+        }
+        return ennemy;
+    }
+	
+	public boolean moveEnnemyUp(Ennemy e) {
+        boolean collision = isEnnemyCollision(getEntityMap(), e.getX(), e.getY() - 1);
+        e.updateSpriteEnnemy();
+        if (!collision) {
+            getEntityMap()[e.getX()][e.getY() - 1] = getEntityMap()[e.getX()][e.getY()];
+            getEntityMap()[e.getX()][e.getY()] = new Air(e.getX(), e.getY());
+            e.setY(e.getY() - 1);
+        }
+        return false;
+    }
+	
+	public boolean moveEnnemyDown(Ennemy e) {
+        boolean collision = isEnnemyCollision(getEntityMap(), e.getX(), e.getY() + 1);
+        e.updateSpriteEnnemy();
+        if (!collision) {
+            getEntityMap()[e.getX()][e.getY() + 1] = getEntityMap()[e.getX()][e.getY()];
+            getEntityMap()[e.getX()][e.getY()] = new Air(e.getX(), e.getY());
+            e.setY(e.getY() + 1);
+        }
+        return false;
+    }
+
+    public boolean moveEnnemyRight(Ennemy e) {
+        boolean collision = isEnnemyCollision(getEntityMap(), e.getX() + 1, e.getY());
+        e.updateSpriteEnnemy();
+        if (!collision) {
+            getEntityMap()[e.getX() + 1][e.getY()] = getEntityMap()[e.getX()][e.getY()];
+            getEntityMap()[e.getX()][e.getY()] = new Air(e.getX(), e.getY());
+            e.setX(e.getX() + 1);
+        }
+        return false;
+    }
+
+    public boolean moveEnnemyLeft(Ennemy e) {
+        boolean collision = isEnnemyCollision(getEntityMap(), e.getX() - 1, e.getY());
+        e.updateSpriteEnnemy();
+        if (!collision) {
+            getEntityMap()[e.getX() - 1][e.getY()] = getEntityMap()[e.getX()][e.getY()];
+            getEntityMap()[e.getX()][e.getY()] = new Air(e.getX(), e.getY());
+            e.setX(e.getX() - 1);
+        }
+        return false;
+    }
+	
+	public boolean isEnnemyCollision(Entity[][] EnnemyPos, int x, int y) {
+        if (EnnemyPos[x][y] instanceof Stone || EnnemyPos[x][y] instanceof Dirt || EnnemyPos[x][y] instanceof Wall
+                || EnnemyPos[x][y] instanceof Diamond || EnnemyPos[x][y] instanceof Exit) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+	
+	@Override
+    public void run() {
+        Entity[][] entity = this.getEntityMap();
+        for (int y = 0; y < getHeightMap(); y++) {
+            for (int x = 0; x < getWidthMap(); x++) {
+                if (entity[x][y] instanceof Ennemy) {
+                    Thread t = new Thread((Runnable) this.getEntityMap()[x][y]);
+                    t.start();
+                }
+            }
+        }
+    }
+    
+    public static int getRandom(int maximum, int minimum) {
+        return ((int) (Math.random() * (maximum - minimum))) + minimum;
+    }
+    
+    public void moveEnnemy() {
+        ArrayList<Ennemy> ennemy = getEnnemy();
+        for (Ennemy e : ennemy) {
+            int ranNb = getRandom(0, 4);
+            System.out.println(ranNb);
+            switch (ranNb) {
+            case 1:
+                moveEnnemyUp(e);
+                break;
+            case 2:
+                moveEnnemyDown(e);
+                break;
+            case 3:
+                moveEnnemyRight(e);
+                break;
+            case 4:
+                moveEnnemyLeft(e);
+                break;
+            }
+        }
+    }
+	
 	public boolean moveUp() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY()-1);
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX(), getPlayer().getY()-1);
@@ -175,9 +282,6 @@ public class Map extends Entity{
 		
 	}
 	
-
-
-
 	public boolean moveDown() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY()+1);
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX(), getPlayer().getY()+1);
