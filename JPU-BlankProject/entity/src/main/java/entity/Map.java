@@ -34,7 +34,7 @@ public class Map extends Entity{
 		super();
 		this.setId(id);
 		this.setContent(message);
-		this.setCountdown(5);
+		this.setCountdown(200);
 		startTime = System.currentTimeMillis();
 		createMap();
 	}
