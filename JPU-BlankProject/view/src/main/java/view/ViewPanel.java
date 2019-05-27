@@ -108,6 +108,7 @@ class ViewPanel extends JPanel implements Observer {
         graphics.drawString(": " + String.valueOf(this.viewFrame.getModel().getMap().getCountdown()-this.viewFrame.getModel().getTimeSinceStart()/1000), 995, 28);
         if (this.viewFrame.getModel().getIsTime()) {
         	this.viewFrame.buildViewFrame(this.getViewFrame().getModel(), 1);
+        	this.viewFrame.revalidate(); //To validate the new JPanel
         	if(isWin) {
         		this.isWin = false;
         		this.viewFrame.printMessage(this.viewFrame.getModel().getLostMessage());
