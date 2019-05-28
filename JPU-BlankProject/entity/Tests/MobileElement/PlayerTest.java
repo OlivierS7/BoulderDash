@@ -14,7 +14,7 @@ import entity.Sprite;
 
 public class PlayerTest {
 
-	private char keyTyped = 'R';
+	private char keyTyped = 'Q';
 	static Sprite spriteDown = new Sprite('P', "Rockford.png");
 	static Sprite spriteUp = new Sprite('P', "Back_Rockford.png");
 	static Sprite spriteLeft = new Sprite('P', "Left_Rockford.png");
