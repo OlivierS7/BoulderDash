@@ -35,8 +35,10 @@ class ViewPanel extends JPanel implements Observer {
 	/** A simple boolean **/
 	boolean isWin = true;
 	
+	/** Scale **/
 	double scale = 2;
 	
+	/** pixelImage size */
 	int pixelImage = 40;
 	
 	//Instanciates ViewPanel
@@ -114,6 +116,7 @@ class ViewPanel extends JPanel implements Observer {
         verifyWinOrLose(graphics);
 	}
 	
+	//Method used to verify if we win or we loose
 	private void verifyWinOrLose(Graphics graphics) {
 		Player playerPos = this.viewFrame.getModel().getMap().getPlayer();
 		if (this.viewFrame.getModel().getIsTime()) {
@@ -144,6 +147,7 @@ class ViewPanel extends JPanel implements Observer {
 		}
 	}
 
+	//MEthod used to draw static graphic in the Panel
 	public void drawGraphics(Graphics graphics) {
 			Player playerPos = this.viewFrame.getModel().getMap().getPlayer();
 			if (playerPos != null) {

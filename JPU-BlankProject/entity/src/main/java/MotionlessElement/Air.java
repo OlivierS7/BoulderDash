@@ -2,13 +2,14 @@ package MotionlessElement;
 
 import java.io.IOException;
 
-import entity.Entity;
 import entity.Sprite;
 
 public class Air extends MotionlessElement {
 
+	/** The sprite. */
 	static Sprite sprite = new Sprite('A', "Background.png");
 	
+	//A static bloc which automatically load the image
 	static {
 		try {
 			sprite.loadImage();
@@ -17,6 +18,7 @@ public class Air extends MotionlessElement {
 		}
 	}
 	
+	//Instanciates an Air
 	public Air(int x, int y) {
 		super(sprite, x, y);
 	}

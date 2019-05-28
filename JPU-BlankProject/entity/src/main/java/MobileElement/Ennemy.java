@@ -6,11 +6,13 @@ import entity.Sprite;
 
 public class Ennemy extends MobileElement {
 	
+	/** The sprites. */
 	static Sprite spriteDown = new Sprite('E', "Ennemy.png");
     static Sprite spriteUp = new Sprite('E', "Ennemy.png");
     static Sprite spriteRight = new Sprite('E', "Ennemy.png");
     static Sprite spriteLeft = new Sprite('E', "Ennemy.png");
     
+  //A static bloc which automatically load the image
     static {
         try {
             spriteDown.loadImage();
@@ -19,43 +21,52 @@ public class Ennemy extends MobileElement {
         }
     }
     
+    //Getter of SpriteUp
     public static Sprite getSpriteUp() {
         return spriteUp;
     }
 
+    //Setter of SpriteUp
     public static void setSpriteUp(Sprite spriteUp) {
         Ennemy.spriteUp = spriteUp;
     }
 
+    //Getter of SpriteDown
     public static Sprite getSpriteDown() {
         return spriteDown;
     }
 
+    //Setter of SpriteDown
     public static void setSpriteDown(Sprite spriteDown) {
         Ennemy.spriteDown = spriteDown;
     }
     
+    //Getter of SpriteRight
     public static Sprite getSpriteRight() {
         return spriteRight;
     }
 
+    //Setter of SpriteRight
     public static void setSpriteRight(Sprite spriteRight) {
         Ennemy.spriteRight = spriteRight;
     }
     
+    //Getter of SpriteLeft
     public static Sprite getSpriteLeft() {
         return spriteLeft;
     }
 
+    //Setter of SpriteLeft
     public static void setSpriteLeft(Sprite spriteLeft) {
         Ennemy.spriteLeft = spriteLeft;
     }
     
-    
+    //Instanciates an Ennemy
     public Ennemy(int x, int y) {
         super(spriteDown, x, y);
     }
     
+    //Method used to update Sprite
     public void updateSpriteEnnemy() {
         this.setSprite(Ennemy.spriteUp);
         try {

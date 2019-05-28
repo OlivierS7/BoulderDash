@@ -1,22 +1,10 @@
 package contract;
 
-/**
- * The Interface IController.
- *
- * @author Jean-Aymeric Diet
- */
 public interface IController {
 
-	/**
-	 * Control.
-	 */
+	//Method to display a message
 	public void control();
 
-	/**
-	 * Order perform.
-	 *
-	 * @param controllerOrder
-	 *          the controller order
-	 */
+	//Method use to do something for each types of order
 	public void orderPerform(ControllerOrder controllerOrder);
 }

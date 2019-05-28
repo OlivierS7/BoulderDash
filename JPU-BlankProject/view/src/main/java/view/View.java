@@ -9,7 +9,6 @@ import contract.IController;
 import contract.IModel;
 import contract.IView;
 
-
 public final class View implements IView, Runnable {
 
 	/** The frame. */

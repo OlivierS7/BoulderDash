@@ -7,16 +7,16 @@ import CollisionsHandler.CollisionsHandler;
 import contract.IModel;
 import entity.Map;
 
-/**
- * The Class Model.
- *
- * @author Jean-Aymeric Diet
- */
 public final class Model extends Observable implements IModel {
 
+	/** The map. */
 	private Map map;
+	
+	/** The boolean isWin. */
 	boolean isWin = false;
-	CollisionsHandler collisionHandler;
+	
+	/** The CollisionsHandler. */
+	private CollisionsHandler collisionHandler;
 	
 	
 	//Constructor of model
@@ -78,24 +78,27 @@ public final class Model extends Observable implements IModel {
 		
 	}
 
-	//Get boolean isWin
+	//Getter boolean isWin
 	public boolean isWin() {
 		return isWin;
 	}
-	//Set boolean isWin
+	
+	//Setter boolean isWin
 	public void setWin(boolean isWin) {
 		this.isWin = isWin;
 	}
 
-	//Get WinMessage
+	//Getter WinMessage
 	public String getWinMessage() {
 		return "Thanks you for playing at our game. We hope that you will come back soon ! =)\nRestart the game to play on another map !";
 	}
 	
+	//Getter LostTimeMessage
 	public String getLostTimeMessage() {
 		return "Time run out... =(\nRestart the game to play on another map !";
 	}
 	
+	//Getter LostDeadMessage
 	public String getLostDeadMessage() {
 		return "You're dead !!\n Restart the game to try again !";
 	}
@@ -105,7 +108,6 @@ public final class Model extends Observable implements IModel {
 		while(true) {
 			try {
 				this.collisionHandler.checkGravity();
-				this.getMap().moveEnnemy();
 				this.viewNotify();
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
@@ -121,19 +123,23 @@ public final class Model extends Observable implements IModel {
 		this.notifyObservers();
 	}
 
+	//Getter of time since start
 	@Override
 	public long getTimeSinceStart() {
 		return this.getMap().getTimeSinceStart();
 	}
 	
+	//Getter of boolean isTime
 	public boolean getIsTime() {
 		return this.getMap().isTime();
 	}
 	
+	//Getter of boolean isWin
 	public boolean getIsWin() {
 		return this.getMap().isWin();
 	}
 	
+	//Getter of boolean isAlive
 	public boolean getIsAlive() {
 		return this.getMap().isPlayerAlive();		
 	}

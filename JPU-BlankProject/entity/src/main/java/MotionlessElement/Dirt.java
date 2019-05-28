@@ -2,13 +2,14 @@ package MotionlessElement;
 
 import java.io.IOException;
 
-import entity.Entity;
 import entity.Sprite;
 
 public class Dirt extends MotionlessElement {
 
+	/** The sprite. */
 	static Sprite sprite = new Sprite('T', "Dirt.png");
 	
+	//A static bloc which automatically load the image
 	static {
 		try {
 			sprite.loadImage();
@@ -17,6 +18,7 @@ public class Dirt extends MotionlessElement {
 		}
 	}
 	
+	//Instanciates a Dirt
 	public Dirt(int x, int y) {
 		super(sprite, x, y);
 	}

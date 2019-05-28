@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 final public class DBConnection {
 	/** The instance. */
 	private static DBConnection	INSTANCE = null;
@@ -17,9 +16,7 @@ final public class DBConnection {
 		this.open();
 	}
 
-
 	//Gets the single instance of DBConnection.
-	//return single instance of DBConnection
 	public static synchronized DBConnection getInstance() {
 		if (DBConnection.INSTANCE == null) {
 			DBConnection.INSTANCE = new DBConnection();

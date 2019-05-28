@@ -4,9 +4,6 @@ import MobileElement.Diamond;
 import MobileElement.Player;
 import MobileElement.Stone;
 import MotionlessElement.Air;
-import MotionlessElement.Dirt;
-import MotionlessElement.Exit;
-import MotionlessElement.Wall;
 import entity.Entity;
 import entity.Map;
 
@@ -21,10 +18,14 @@ public class CollisionsHandler {
 
 	// Method to check gravity
 	public void checkGravity() {
+		
 		Entity[][] entity = this.map.getEntityMap();
-		for (int j = this.map.getHeightMap() - 1; j >= 0; j--) {
-			for (int i = 0; i < this.map.getWidthMap(); i++) {
-				if ((entity[i][j] instanceof Stone || entity[i][j] instanceof Diamond)
+		int height = this.map.getHeightMap();
+		int width = this.map.getWidthMap();
+		
+		for (int j = height - 1; j >= 0; j--) {
+			for (int i = 0; i < width; i++) {
+				if ((entity[i][j] instanceof Stone || entity[i][j] instanceof Diamond) //If nothing under Stone or Diamond it falls
 						&& this.map.getEntityMap()[i][j + 1] instanceof Air) {
 					if (entity[i][j] instanceof Stone) {
 						((Stone) entity[i][j]).setFallen(true);
@@ -35,16 +36,18 @@ public class CollisionsHandler {
 					}
 					this.map.getEntityMap()[i][j + 1] = entity[i][j];
 					entity[i][j] = new Air(i, j);
-				} else if ((entity[i][j] instanceof Stone || entity[i][j] instanceof Diamond)
-						&& this.map.getEntityMap()[i][j + 1] instanceof Player) {
+				} 
+				else if ((entity[i][j] instanceof Stone || entity[i][j] instanceof Diamond) //If Player under Stone or Diamond which are falling then player die
+						&& this.map.getEntityMap()[i][j + 1] instanceof Player) { 
 					if (entity[i][j] instanceof Stone) {
 						if (((Stone) entity[i][j]).isFallen()) {
 							this.map.getPlayer().setAlive(false);
 						}
 					} else if (((Diamond) entity[i][j]).isFallen()) {
 							this.map.getPlayer().setAlive(false);
-						}
-					} else if (entity[i][j] instanceof Stone
+					}
+				} 
+				else if (entity[i][j] instanceof Stone
 						&& this.map.getEntityMap()[i][j + 1] instanceof Stone
 						&& this.map.getEntityMap()[i - 1][j] instanceof Air
 						&& this.map.getEntityMap()[i - 1][j + 1] instanceof Air) {
@@ -59,7 +62,7 @@ public class CollisionsHandler {
 						((Diamond) entity[i][j]).setFalling(((Diamond) entity[i][j]).getFalling() + 1);
 					}
 					
-				} else if (entity[i][j] instanceof Stone
+				} else if (entity[i][j] instanceof Stone  								//Cascade gravity
 						&& this.map.getEntityMap()[i][j + 1] instanceof Stone
 						&& this.map.getEntityMap()[i + 1][j] instanceof Air
 						&& this.map.getEntityMap()[i + 1][j + 1] instanceof Air) {
@@ -73,9 +76,9 @@ public class CollisionsHandler {
 						((Diamond) entity[i][j]).setFallen(true);
 						((Diamond) entity[i][j]).setFalling(((Diamond) entity[i][j]).getFalling() + 1);
 					}
-					
-				} else {
-					if (entity[i][j] instanceof Stone) {
+				} 
+				else {
+					if (entity[i][j] instanceof Stone) {			//Reset the variables of Stone and diamond on each check of gravity
 						((Stone) entity[i][j]).setFallen(false);
 						((Stone) entity[i][j]).setFalling(0);
 					} else if (entity[i][j] instanceof Diamond) {
@@ -85,38 +88,6 @@ public class CollisionsHandler {
 
 				}
 			}
-		}
-	}
-
-	public boolean isCollision(Entity[][] playerPos, int x, int y) {
-		if (playerPos[x][y] instanceof Stone || playerPos[x][y] instanceof Wall || playerPos[x][y] instanceof Exit) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public boolean isEnnemyCollision(Entity[][] EnnemyPos, int x, int y) {
-        if(EnnemyPos[x][y] instanceof Stone || EnnemyPos[x][y] instanceof Dirt || EnnemyPos[x][y] instanceof Wall || EnnemyPos[x][y] instanceof Diamond || EnnemyPos[x][y] instanceof Exit) {
-            return true; 
-        } else {
-            return false;
-        }
-    }
-	
-	public boolean isDiamond(Entity[][] playerPos, int x, int y) {
-		if (playerPos[x][y] instanceof Diamond) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean isWin(Entity[][] playerPos, int x, int y) {
-		if (playerPos[x][y] instanceof Exit && this.map.getCount() >= 10) {
-			return true;
-		} else {
-			return false;
 		}
 	}
 }

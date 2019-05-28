@@ -5,38 +5,22 @@ import contract.IController;
 import contract.IModel;
 import contract.IView;
 
-/**
- * The Class Controller.
- */
+//The class controller
 public final class Controller implements IController {
 
-	/** The view. */
-	private IView		view;
+	/** The view. **/
+	private IView view;
 
-	/** The model. */
-	private IModel	model;
-
-	/**
-	 * Instantiates a new controller.
-	 *
-	 * @param view
-	 *          the view
-	 * @param model
-	 *          the model
-	 */
+	/** The model. **/
+	private IModel model;
+	
+	//Instanciates a new Controller
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
 	}
 
-	/**
-     * Control.
-     */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IController#control()
-	 */
+	//Method which refers to printMessage method of the view
 	public void control() {
 		this.view.printMessage("Welcome to our BoulderDash game !\n"
 				+ "The game's protagonist is called Rockford and this is your character.\n"
@@ -45,41 +29,22 @@ public final class Controller implements IController {
 				+ "Please choose a map : 1, 2, 3, 4 or 5");
 	}
 	
+	//Method which start the loop of the model
 	public void play() {
 		this.model.loop();
 	}
 
-	/**
-     * Sets the view.
-     *
-     * @param pview
-     *            the new view
-     */
+	//Setter of the view
 	private void setView(final IView pview) {
 		this.view = pview;
 	}
 
-	/**
-	 * Sets the model.
-	 *
-	 * @param model
-	 *          the new model
-	 */
+	//Setter of the model
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
 
-	/**
-     * Order perform.
-     *
-     * @param controllerOrder
-     *            the controller order
-     */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IController#orderPerform(contract.ControllerOrder)
-	 */
+	//Method used to move the player and load the map
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case Map1:

@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Component;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
@@ -103,14 +102,17 @@ class ViewFrame extends JFrame implements KeyListener {
 		JOptionPane.showMessageDialog(null, message);
 	}
 	
+	//KeyTyped Listener
 	public void keyTyped(final KeyEvent e) {
 		
 	}
 
+	//KeyPressed Listener
 	public void keyPressed(final KeyEvent e) {
 		
 	}
 
+	//KeyReleased Listener
 	public void keyReleased(final KeyEvent e) {
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}

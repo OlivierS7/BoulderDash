@@ -34,88 +34,47 @@ public class Sprite {
     }
 
 
-    /**
-     * Gets the image.
-     *
-     * @return the image
-     */
+    //Getter of the Image
     public final Image getImage() {
         return this.image;
     }
 
-    /**
-     * Loads image.
-     *
-     * @throws IOException
-     *             Signals that an I/O exception has occurred.
-     */
+    //Method used to load the image
     public final void loadImage() throws IOException {
         this.setImage(ImageIO.read(new File("sprite/" + this.getImageName())));
     }
 
-    /**
-     * Gets the console image.
-     *
-     * @return the consoleImage
-     */
+    //Getter of the console Image
     public final char getConsoleImage() {
         return this.consoleImage;
     }
 
-    /**
-     * Sets the image.
-     *
-     * @param image
-     *            the new image
-     */
+ 	//Setter of the Image
     private void setImage(final Image image) {
         this.image = image;
     }
 
-    /**
-     * Sets the console image.
-     *
-     * @param consoleImage
-     *            the consoleImage to set
-     */
+    //Setter of the console Image
     private void setConsoleImage(final char consoleImage) {
         this.consoleImage = consoleImage;
     }
 
-    /**
-     * Gets the image name.
-     *
-     * @return the imageName
-     */
+    //Get the image name
     public final String getImageName() {
         return this.imageName;
     }
 
-    /**
-     * Sets the image name.
-     *
-     * @param imageName
-     *            the imageName to set
-     */
+    //Set the image name
     private void setImageName(final String imageName) {
         this.imageName = imageName;
     }
 
-    /**
-     * Checks if is image loaded.
-     *
-     * @return true, if is image loaded
-     */
+    //Check if Image is loaded
     public final boolean isImageLoaded() {
         return this.imageLoaded;
     }
 
-    /**
-     * Sets the image loaded.
-     *
-     * @param isImageLoaded
-     *            the new image loaded
-     */
+   //Setter of the boolean to be sure that the image is loaded
     public final void setImageLoaded(final boolean isImageLoaded) {
         this.imageLoaded = isImageLoaded;
     }

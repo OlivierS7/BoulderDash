@@ -1,10 +1,6 @@
 package contract;
 
-/**
- * The Enum ControllerOrder.
- *
- * @author Jean-Aymeric Diet
- */
+/** A simple enum **/
 public enum ControllerOrder {
 
 	Map1,
