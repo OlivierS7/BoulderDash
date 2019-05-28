@@ -15,7 +15,7 @@ public class Ennemy extends MobileElement {
     /** A boolean to check if the ennemy is alive. */
 	boolean isAlive = true;
 	
-  //A static bloc which automatically load the image
+	//A static bloc which automatically load the image
     static {
         try {
             spriteDown.loadImage();
@@ -44,10 +44,12 @@ public class Ennemy extends MobileElement {
         Ennemy.spriteDown = spriteDown;
     }
     
+    //Getter of isAlive
     public boolean isAlive() {
 		return isAlive;
 	}
 
+    //Stter of isAlive
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
 	}

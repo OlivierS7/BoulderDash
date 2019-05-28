@@ -182,6 +182,7 @@ public class Map extends Entity implements Runnable{
 			return false;
 		}
 	}	
+	
 	//Setter of the countdown
     public void setCountdown(int countdown) {
 		this.countdown = countdown;
