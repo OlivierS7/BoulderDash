@@ -126,7 +126,7 @@ public class Map extends Entity implements Runnable{
 
 	//Method used to check if there's a collision
 	public boolean isCollision(Entity[][] playerPos, int x, int y) {
-		if(playerPos[x][y] instanceof Stone || playerPos[x][y] instanceof Wall || playerPos[x][y] instanceof Exit) {
+		if(playerPos[x][y] instanceof Stone || playerPos[x][y] instanceof Wall || playerPos[x][y] instanceof Exit || playerPos[x][y] instanceof Ennemy) {
 			return true; 
         } else {
             return false;
@@ -156,7 +156,7 @@ public class Map extends Entity implements Runnable{
 			return false;
 		}
 	}
-	
+		
 	//Method to check if we have enough time to finish
 	public boolean isTime() {
 		if (getCountdown()*1000-getTimeSinceStart() < 0) {
@@ -164,7 +164,24 @@ public class Map extends Entity implements Runnable{
 		}
 		return false;
 	}
+	
+	//Method to check if a stone is on the right
+	public boolean isStoneOnRight(Entity[][] playerPos, int x, int y) {
+		if (playerPos[x][y] instanceof Stone && playerPos[x+1][y] instanceof Air) {
+			return true;
+		} else {
+			return false;
+		}
+	}	
 
+	//Method to check if a stone is on the left
+	public boolean isStoneOnLeft(Entity[][] playerPos, int x, int y) {
+		if (playerPos[x][y] instanceof Stone && playerPos[x-1][y] instanceof Air) {
+			return true;
+		} else {
+			return false;
+		}
+	}	
 	//Setter of the countdown
     public void setCountdown(int countdown) {
 		this.countdown = countdown;
@@ -190,51 +207,67 @@ public class Map extends Entity implements Runnable{
     }
 	
 	//Method used to move up the ennemy
-	public boolean moveEnnemyUp(Ennemy e) {
+	public void moveEnnemyUp(Ennemy e) {
         boolean collision = isEnnemyCollision(getEntityMap(), e.getX(), e.getY() - 1);
+        boolean isEnnemyOnPlayer = isEnnemyOnPlayer(getEntityMap(), e.getX(), e.getY() - 1);
         e.updateSpriteEnnemy();
         if (!collision) {
+        	if (isEnnemyOnPlayer) {
+    			this.getPlayer().setAlive(false);
+    		} else {
             getEntityMap()[e.getX()][e.getY() - 1] = getEntityMap()[e.getX()][e.getY()];
             getEntityMap()[e.getX()][e.getY()] = new Air(e.getX(), e.getY());
             e.setY(e.getY() - 1);
+    		}
         }
-        return false;
     }
 	
 	//Method used to move down the ennemy
-	public boolean moveEnnemyDown(Ennemy e) {
+	public void moveEnnemyDown(Ennemy e) {
         boolean collision = isEnnemyCollision(getEntityMap(), e.getX(), e.getY() + 1);
+        boolean isEnnemyOnPlayer = isEnnemyOnPlayer(getEntityMap(), e.getX(), e.getY() + 1);
         e.updateSpriteEnnemy();
         if (!collision) {
+        	if (isEnnemyOnPlayer) {
+    			this.getPlayer().setAlive(false);
+    		} else {
             getEntityMap()[e.getX()][e.getY() + 1] = getEntityMap()[e.getX()][e.getY()];
             getEntityMap()[e.getX()][e.getY()] = new Air(e.getX(), e.getY());
             e.setY(e.getY() + 1);
+    		}
         }
-        return false;
     }
 
 	//Method used to move right the ennemy
-    public boolean moveEnnemyRight(Ennemy e) {
+    public void moveEnnemyRight(Ennemy e) {
         boolean collision = isEnnemyCollision(getEntityMap(), e.getX() + 1, e.getY());
+        boolean isEnnemyOnPlayer = isEnnemyOnPlayer(getEntityMap(), e.getX() + 1, e.getY());
         e.updateSpriteEnnemy();
         if (!collision) {
+        	if (isEnnemyOnPlayer) {
+    			this.getPlayer().setAlive(false);
+    		} else {
             getEntityMap()[e.getX() + 1][e.getY()] = getEntityMap()[e.getX()][e.getY()];
             getEntityMap()[e.getX()][e.getY()] = new Air(e.getX(), e.getY());
             e.setX(e.getX() + 1);
+    		}
         }
-        return false;
     }
 
     //Method used to move left the ennemy
-    public boolean moveEnnemyLeft(Ennemy e) {
+    public void moveEnnemyLeft(Ennemy e) {
         boolean collision = isEnnemyCollision(getEntityMap(), e.getX() - 1, e.getY());
+        boolean isEnnemyOnPlayer = isEnnemyOnPlayer(getEntityMap(), e.getX() - 1, e.getY());
         e.updateSpriteEnnemy();
         if (!collision) {
+        	if (isEnnemyOnPlayer) {
+    			this.getPlayer().setAlive(false);
+    		} else {
             getEntityMap()[e.getX() - 1][e.getY()] = getEntityMap()[e.getX()][e.getY()];
             getEntityMap()[e.getX()][e.getY()] = new Air(e.getX(), e.getY());
             e.setX(e.getX() - 1);
+    		}
         }
-        return false;
     }
 	
     //Method used to check if there is a collision
@@ -247,6 +280,13 @@ public class Map extends Entity implements Runnable{
         }
     }
 	
+	public boolean isEnnemyOnPlayer(Entity[][] EnnemyPos, int x, int y) {
+		 if (EnnemyPos[x][y] instanceof Player){
+	            return true;
+	        } else {
+	            return false;
+	        }
+	}
 	//Method used to run a thread
 	@Override
     public void run() {
@@ -271,7 +311,6 @@ public class Map extends Entity implements Runnable{
         ArrayList<Ennemy> ennemy = getEnnemy();
         for (Ennemy e : ennemy) {
             int ranNb = getRandom(0, 4);
-            System.out.println(ranNb);
             switch (ranNb) {
             case 1:
                 moveEnnemyUp(e);
@@ -339,6 +378,7 @@ public class Map extends Entity implements Runnable{
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX()-1, getPlayer().getY());
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX()-1, getPlayer().getY());
 		boolean isWin = isWin(getEntityMap(), getPlayer().getX()-1, getPlayer().getY());
+        boolean isStoneOnSide = isStoneOnLeft(getEntityMap(), getPlayer().getX()-1, getPlayer().getY());
 		getPlayer().updateSpritePlayer('Q');
 		if (!collision) {
 				getEntityMap()[getPlayer().getX()-1][getPlayer().getY()] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
@@ -352,6 +392,12 @@ public class Map extends Entity implements Runnable{
 				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Player(getPlayer().getX(),getPlayer().getY());
 				return true;
 			}
+			if (isStoneOnSide) {
+				getEntityMap()[getPlayer().getX()-2][getPlayer().getY()] = getEntityMap()[getPlayer().getX()-1][getPlayer().getY()];
+				getEntityMap()[getPlayer().getX()-1][getPlayer().getY()] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
+				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(),getPlayer().getY());
+				getPlayer().setX(getPlayer().getX()-1);
+			}
 		}
 		return false;
 	}
@@ -361,6 +407,7 @@ public class Map extends Entity implements Runnable{
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX()+1, getPlayer().getY());
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX()+1, getPlayer().getY());
 		boolean isWin = isWin(getEntityMap(), getPlayer().getX()+1, getPlayer().getY());
+		boolean isStoneOnSide = isStoneOnRight(getEntityMap(), getPlayer().getX()+1, getPlayer().getY());
 		getPlayer().updateSpritePlayer('D');
 		if (!collision) {
 				getEntityMap()[getPlayer().getX()+1][getPlayer().getY()] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
@@ -373,6 +420,12 @@ public class Map extends Entity implements Runnable{
 			if (isWin) {
 				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Player(getPlayer().getX(),getPlayer().getY());
 				return true;
+			}
+			if (isStoneOnSide) {
+				getEntityMap()[getPlayer().getX()+2][getPlayer().getY()] = getEntityMap()[getPlayer().getX()+1][getPlayer().getY()];
+				getEntityMap()[getPlayer().getX()+1][getPlayer().getY()] = getEntityMap()[getPlayer().getX()][getPlayer().getY()];
+				getEntityMap()[getPlayer().getX()][getPlayer().getY()] = new Air(getPlayer().getX(), getPlayer().getY());
+				getPlayer().setX(getPlayer().getX()+1);
 			}
 		}
 		return false;

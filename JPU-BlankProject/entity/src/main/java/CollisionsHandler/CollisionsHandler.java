@@ -1,6 +1,7 @@
 package CollisionsHandler;
 
 import MobileElement.Diamond;
+import MobileElement.Ennemy;
 import MobileElement.Player;
 import MobileElement.Stone;
 import MotionlessElement.Air;
@@ -47,6 +48,21 @@ public class CollisionsHandler {
 							this.map.getPlayer().setAlive(false);
 					}
 				} 
+				else if ((entity[i][j] instanceof Stone || entity[i][j] instanceof Diamond) //If Player under Stone or Diamond which are falling then player die
+						&& this.map.getEntityMap()[i][j + 1] instanceof Ennemy) {
+					if (entity[i][j] instanceof Stone) {
+						if (((Stone) entity[i][j]).isFallen()) {
+							this.map.getEnnemy().remove(entity[i][j+1]);
+							entity[i][j+1] = new Air(i, j);
+							entity[i+1][j] = new Diamond(i+1, j);
+							entity[i-1][j] = new Diamond(i-1, j);
+							entity[i][j+1] = new Diamond(i, j+1);
+							entity[i][j-1] = new Diamond(i, j-1);
+						}
+					} else if (((Diamond) entity[i][j]).isFallen()) {
+							this.map.getPlayer().setAlive(false);
+					}
+				}
 				else if (entity[i][j] instanceof Stone
 						&& this.map.getEntityMap()[i][j + 1] instanceof Stone
 						&& this.map.getEntityMap()[i - 1][j] instanceof Air

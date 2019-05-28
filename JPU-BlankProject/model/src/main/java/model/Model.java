@@ -108,6 +108,9 @@ public final class Model extends Observable implements IModel {
 		while(true) {
 			try {
 				this.collisionHandler.checkGravity();
+				if (this.map.getPlayer() != null) {
+					this.map.moveEnnemy();
+				}
 				this.viewNotify();
 				Thread.sleep(100);
 			} catch (InterruptedException e) {

@@ -12,6 +12,9 @@ public class Ennemy extends MobileElement {
     static Sprite spriteRight = new Sprite('E', "Ennemy.png");
     static Sprite spriteLeft = new Sprite('E', "Ennemy.png");
     
+    /** A boolean to check if the ennemy is alive. */
+	boolean isAlive = true;
+	
   //A static bloc which automatically load the image
     static {
         try {
@@ -41,7 +44,15 @@ public class Ennemy extends MobileElement {
         Ennemy.spriteDown = spriteDown;
     }
     
-    //Getter of SpriteRight
+    public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+
+	//Getter of SpriteRight
     public static Sprite getSpriteRight() {
         return spriteRight;
     }
