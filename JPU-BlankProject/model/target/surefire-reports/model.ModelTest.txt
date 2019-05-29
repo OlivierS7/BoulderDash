@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: model.ModelTest
--------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.286 sec - in model.ModelTest
-=======
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.457 sec - in model.ModelTest
->>>>>>> branch 'master' of https://github.com/OlivierS7/JPU-BlankProject/
