@@ -7,15 +7,12 @@ import java.sql.SQLException;
 
 import entity.Map;
 
-
 class DAOMap extends DAOEntity<Map> {
 
-	//Instanciates a DAOmap
 	public DAOMap(final Connection connection) throws SQLException {
 		super(connection);
 	}
 
-	//Execute a stored procedure and return a map object
 	public Map find(final String code) {
 		Map map = new Map();
 		try {
