@@ -4,6 +4,10 @@ import java.util.Observable;
 
 import entity.Map;
 
+/**
+ * @author Olivier
+ *
+ */
 public interface IModel {
 
 	Map getMap();

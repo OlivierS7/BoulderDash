@@ -4,6 +4,10 @@ import java.io.IOException;
 
 import entity.Sprite;
 
+/**
+ * @author Olivier
+ *
+ */
 public class Air extends MotionlessElement {
 
 	static Sprite sprite = new Sprite('A', "Background.png");

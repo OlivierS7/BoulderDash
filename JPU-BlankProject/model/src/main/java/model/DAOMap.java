@@ -7,6 +7,10 @@ import java.sql.SQLException;
 
 import entity.Map;
 
+/**
+ * @author Olivier
+ *
+ */
 class DAOMap extends DAOEntity<Map> {
 
 	public DAOMap(final Connection connection) throws SQLException {

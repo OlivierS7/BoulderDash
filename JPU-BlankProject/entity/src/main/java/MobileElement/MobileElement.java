@@ -3,6 +3,10 @@ package MobileElement;
 import entity.Entity;
 import entity.Sprite;
 
+/**
+ * @author Olivier
+ *
+ */
 public class MobileElement extends Entity {
 
 	public MobileElement(Sprite sprite, int x, int y) {

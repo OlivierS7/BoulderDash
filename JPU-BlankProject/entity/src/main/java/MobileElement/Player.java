@@ -4,6 +4,10 @@ import java.io.IOException;
 
 import entity.Sprite;
 
+/**
+ * @author Olivier
+ *
+ */
 public class Player extends MobileElement {
 
 	static Sprite spriteDown = new Sprite('P', "Rockford.png");

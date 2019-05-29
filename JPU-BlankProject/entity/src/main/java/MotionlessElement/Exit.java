@@ -4,6 +4,10 @@ import java.io.IOException;
 
 import entity.Sprite;
 
+/**
+ * @author Olivier
+ *
+ */
 public class Exit extends MotionlessElement {
 
 	static Sprite sprite = new Sprite('X', "Door.png");

@@ -5,6 +5,11 @@ import java.sql.SQLException;
 
 import entity.Entity;
 
+/**
+ * @author Olivier
+ *
+ * @param <E>
+ */
 abstract class DAOEntity<E extends Entity> {
 
 	private final Connection connection;

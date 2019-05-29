@@ -1,5 +1,9 @@
 package contract;
 
+/**
+ * @author Olivier
+ *
+ */
 public interface IController {
 
 	public void control();

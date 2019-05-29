@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * @author Olivier
+ *
+ */
 class DBProperties extends Properties {
 
 	private static final long serialVersionUID = 5289057445894568927L;

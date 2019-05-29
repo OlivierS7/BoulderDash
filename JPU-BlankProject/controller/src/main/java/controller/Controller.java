@@ -5,6 +5,11 @@ import contract.IController;
 import contract.IModel;
 import contract.IView;
 
+/**
+ * @author Olivier
+ *
+ */
+
 public final class Controller implements IController {
 
 	private IView view;
@@ -15,7 +20,7 @@ public final class Controller implements IController {
 		this.setView(view);
 		this.setModel(model);
 	}
-
+	
 	public void control() {
 		this.view.printMessage("Welcome to our BoulderDash game !\n"
 				+ "The game's protagonist is called Rockford and this is your character.\n"

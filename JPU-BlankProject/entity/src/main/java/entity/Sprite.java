@@ -6,6 +6,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * @author Olivier
+ *
+ */
 public class Sprite {
 
 	private Image image;

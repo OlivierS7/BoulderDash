@@ -15,6 +15,10 @@ import javax.swing.JPanel;
 import MobileElement.Player;
 import entity.Entity;
 
+/**
+ * @author Olivier
+ *
+ */
 class ViewPanel extends JPanel implements Observer {
 
 	private ViewFrame viewFrame;

@@ -7,6 +7,10 @@ import CollisionsHandler.CollisionsHandler;
 import contract.IModel;
 import entity.Map;
 
+/**
+ * @author Olivier
+ *
+ */
 public final class Model extends Observable implements IModel {
 
 	private Map map;

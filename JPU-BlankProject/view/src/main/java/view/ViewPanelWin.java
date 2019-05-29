@@ -11,6 +11,10 @@ import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+/**
+ * @author Olivier
+ *
+ */
 public class ViewPanelWin extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 5784682934133773896L;

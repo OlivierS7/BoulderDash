@@ -9,6 +9,10 @@ import contract.IController;
 import contract.IModel;
 import contract.IView;
 
+/**
+ * @author Olivier
+ *
+ */
 public final class View implements IView, Runnable {
 
 	private final ViewFrame viewFrame;

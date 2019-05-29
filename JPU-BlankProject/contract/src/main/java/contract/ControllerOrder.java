@@ -1,5 +1,9 @@
 package contract;
 
+/**
+ * @author Olivier
+ *
+ */
 public enum ControllerOrder {
 
 	Map1,

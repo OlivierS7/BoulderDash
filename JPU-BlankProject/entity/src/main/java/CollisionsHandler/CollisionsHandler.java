@@ -8,6 +8,10 @@ import MotionlessElement.Air;
 import entity.Entity;
 import entity.Map;
 
+/**
+ * @author Olivier
+ *
+ */
 public class CollisionsHandler {
 
 	private Map map;

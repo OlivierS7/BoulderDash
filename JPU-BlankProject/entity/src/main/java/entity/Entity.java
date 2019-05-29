@@ -2,6 +2,10 @@ package entity;
 
 import java.awt.Image;
 
+/**
+ * @author Olivier
+ *
+ */
 public abstract class Entity {
 	protected int x;
 	protected int y;
@@ -33,6 +37,9 @@ public abstract class Entity {
 		this.sprite = sprite;
 	}
 
+	/**
+	 * @return
+	 */
 	public final Image getImage() {
 		return this.getSprite().getImage();
 	}

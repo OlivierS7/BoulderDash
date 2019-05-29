@@ -4,6 +4,10 @@ import java.io.IOException;
 
 import entity.Sprite;
 
+/**
+ * @author Olivier
+ *
+ */
 public class Diamond extends MobileElement {
 
 	static Sprite sprite = new Sprite('D', "Diamond.png");
