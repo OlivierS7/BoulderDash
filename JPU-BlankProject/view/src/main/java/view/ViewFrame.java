@@ -13,59 +13,47 @@ import contract.IModel;
 
 class ViewFrame extends JFrame implements KeyListener {
 
-	/** The model. */
 	private IModel model;
 
-	/** The controller. */
-	private IController	controller;
-	
-	/** The Constant serialVersionUID. */
+	private IController controller;
+
 	private static final long serialVersionUID = -697358409737458175L;
 
-	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model) throws HeadlessException {
 		this.buildViewFrame(model, 0);
 	}
 
-	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model, final GraphicsConfiguration gc) {
 		super(gc);
 		this.buildViewFrame(model, 0);
 	}
 
-	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model, final String title) throws HeadlessException {
 		super(title);
 		this.buildViewFrame(model, 0);
 	}
 
-	//Instanciates a ViewFrame
 	public ViewFrame(final IModel model, final String title, final GraphicsConfiguration gc) {
 		super(title, gc);
 		this.buildViewFrame(model, 0);
 	}
 
-	//Get the Controller
 	private IController getController() {
 		return this.controller;
 	}
 
-	//Set the Controller
 	protected void setController(final IController controller) {
 		this.controller = controller;
 	}
 
-	//Get the Model
 	protected IModel getModel() {
 		return this.model;
 	}
 
-	//Set the model
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
 
-	//Build the ViewFrame
 	public void buildViewFrame(final IModel model, int nb) {
 		if (nb == 0) {
 			this.setModel(model);
@@ -97,22 +85,18 @@ class ViewFrame extends JFrame implements KeyListener {
 		}
 	}
 
-	//Method to print message
 	public void printMessage(final String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
-	
-	//KeyTyped Listener
+
 	public void keyTyped(final KeyEvent e) {
-		
+
 	}
 
-	//KeyPressed Listener
 	public void keyPressed(final KeyEvent e) {
-		
+
 	}
 
-	//KeyReleased Listener
 	public void keyReleased(final KeyEvent e) {
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
