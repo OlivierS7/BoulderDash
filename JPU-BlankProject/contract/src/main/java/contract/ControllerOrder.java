@@ -1,6 +1,6 @@
 package contract;
 
-/** A simple enum **/
+
 public enum ControllerOrder {
 
 	Map1,

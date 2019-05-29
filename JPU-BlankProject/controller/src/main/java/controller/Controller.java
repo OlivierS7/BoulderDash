@@ -5,7 +5,7 @@ import contract.IController;
 import contract.IModel;
 import contract.IView;
 
-//The class controller
+
 public final class Controller implements IController {
 
 	/** The view. **/
