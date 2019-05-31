@@ -23,7 +23,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>org.jpublankproject.main.Main</mainClass>
+                  <mainClass>main.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>
