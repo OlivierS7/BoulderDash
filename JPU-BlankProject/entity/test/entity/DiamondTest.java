@@ -12,6 +12,7 @@ import org.junit.Test;
  * @author Olivier
  *
  */
+
 public class DiamondTest {
 	
 	private boolean isDiamond;

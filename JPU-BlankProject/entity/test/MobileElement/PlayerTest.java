@@ -16,6 +16,7 @@ import entity.Sprite;
  * @author Olivier
  *
  */
+
 public class PlayerTest {
 
 	private char keyTyped = 'Q';

@@ -12,6 +12,7 @@ import org.junit.Test;
  * @author Olivier
  *
  */
+
 public class ExitWinTest {
 	private int count = 10;
 	private Map map;
