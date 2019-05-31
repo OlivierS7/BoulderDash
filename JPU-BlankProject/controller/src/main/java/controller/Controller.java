@@ -33,11 +33,11 @@ public final class Controller implements IController {
 		this.model.loop();
 	}
 
-	private void setView(final IView pview) {
+	public void setView(final IView pview) {
 		this.view = pview;
 	}
 
-	private void setModel(final IModel model) {
+	public void setModel(final IModel model) {
 		this.model = model;
 	}
 
