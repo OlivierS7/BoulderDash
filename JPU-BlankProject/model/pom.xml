@@ -19,5 +19,5 @@
   		<version>5.1.39</version>
   	</dependency>
   </dependencies>
-  <description>Model Module </description>
+  <description>In this modul we define the database connection and the level content we want to display.</description>
 </project>

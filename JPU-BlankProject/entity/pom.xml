@@ -7,4 +7,5 @@
   </parent>
   <artifactId>entity</artifactId>
   <name>Entity</name>
+  <description>Like it is said in the name it contains all the entities like the player, the ennemies, a stone or a diamond etc.</description>
 </project>

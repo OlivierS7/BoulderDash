@@ -14,4 +14,5 @@
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
+  <description>The contract is here to avoid interdependancies and it contains all the interfaces.</description>
 </project>

@@ -8,6 +8,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>main</artifactId>
   <name>Main</name>
+  <description>It's here that everything is launched without this class you can't launch anything.</description>
   <build>
     <plugins>
       <plugin>

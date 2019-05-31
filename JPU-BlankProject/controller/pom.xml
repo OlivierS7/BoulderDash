@@ -14,4 +14,5 @@
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
+  <description>In our controller we have put a welcome message to explain a little bit the game and what we have to do.</description>
 </project>

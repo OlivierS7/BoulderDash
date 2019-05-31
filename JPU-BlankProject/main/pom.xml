@@ -48,4 +48,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<description>It's here that everything is launched without this class you can't launch anything.</description>
 </project>
