@@ -1,5 +1,0 @@
-model\Model.class
-database\DBConnection.class
-database\DBProperties.class
-model\DAOEntity.class
-model\DAOMap.class

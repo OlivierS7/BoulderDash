@@ -1,3 +1,3 @@
-# JPU-BlankProject
-
-Base de démarrage pour le projet Jave/POO/UML des 1ières années Exia-Cesi
+# BoulderDash - Groupe 2 - Saint-Nazaire
+Projet Jave/POO/UML
+Première Année Cesi.EXIA
