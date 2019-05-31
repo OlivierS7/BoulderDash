@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 import static org.junit.Assert.*;
 
@@ -8,15 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * @author Olivier
- *
- */
-
-public class ExitWinTest {
-	private int count = 10;
-	private Map map;
-
+public class ModelTest {
+	private Model model;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -27,9 +20,8 @@ public class ExitWinTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.map = new Map();
-		this.map.setCount(count);
-		
+		this.model = new Model();
+		this.model.getMap().setWin(false);
 	}
 
 	@After
@@ -37,15 +29,9 @@ public class ExitWinTest {
 	}
 
 	@Test
-	public void testIsWin() {
-		final boolean expected = true;
-		if(this.map.getCount() >= 10) {
-		this.map.setWin(true);
-		} else { 
-		this.map.setWin(false);
-		}
-		assertEquals(expected, this.map.isWin());
+	public void testGetIsWin() {
+		boolean expected = false;
+		assertEquals(expected, this.model.getIsWin());
 	}
+
 }
-
-
