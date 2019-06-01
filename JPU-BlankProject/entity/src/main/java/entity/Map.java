@@ -103,6 +103,13 @@ public class Map extends Entity implements Runnable {
 	}
 
 	public void setCount(int count) {
+		if (count < 0) {
+			try {
+				throw new Exception("Diamond count must be positiv");
+			} catch (Exception e) {
+				//e.printStackTrace();
+			}
+		}
 		this.count = count;
 	}
 
