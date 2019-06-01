@@ -21,12 +21,12 @@ public final class Controller implements IController {
 		this.setModel(model);
 	}
 	
+	public Controller() {
+		
+	}
+	
 	public void control() {
-		this.view.printMessage("Welcome to our BoulderDash game !\n"
-				+ "The game's protagonist is called Rockford and this is your character.\n"
-				+ "You must dig through caves collecting diamonds (minimum 10) and reach the exit within a time limit,\n"
-				+ "while avoiding various types of dangerous creatures as well as obstacles like falling rocks and the constant danger of being crushed or trapped by an avalanche. \n\n"
-				+ "Please choose a map : 1, 2, 3, 4 or 5");
+		this.view.printMessage(this.getMessage());
 	}
 
 	public void play() {
@@ -73,6 +73,14 @@ public final class Controller implements IController {
 		default:
 			break;
 		}
+	}
+	
+	public String getMessage() {
+		return "Welcome to our BoulderDash game !\n"
+				+ "The game's protagonist is called Rockford and this is your character.\n"
+				+ "You must dig through caves collecting diamonds (minimum 10) and reach the exit within a time limit,\n"
+				+ "while avoiding various types of dangerous creatures as well as obstacles like falling rocks and the constant danger of being crushed or trapped by an avalanche. \n\n"
+				+ "Please choose a map : 1, 2, 3, 4 or 5";
 	}
 
 }
