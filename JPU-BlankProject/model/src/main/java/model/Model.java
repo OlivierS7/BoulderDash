@@ -28,6 +28,9 @@ public final class Model extends Observable implements IModel {
 		return this.map;
 	}
 
+	/**
+	 * @param map
+	 */
 	private void setMap(final Map map) {
 		this.map = map;
 		this.collisionHandler = new CollisionsHandler(map);

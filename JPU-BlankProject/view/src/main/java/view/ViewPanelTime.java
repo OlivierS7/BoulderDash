@@ -22,16 +22,25 @@ public class ViewPanelTime extends JPanel implements Observer {
 
 	Image Lose;
 
+	/**
+	 * @param viewFrame
+	 */
 	public ViewPanelTime(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
 	}
 
+	/**
+	 * @return a ViewFrame
+	 */
 	@SuppressWarnings("unused")
 	private ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
 
+	/**
+	 * @param viewFrame
+	 */
 	private void setViewFrame(final ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
 	}
@@ -40,6 +49,9 @@ public class ViewPanelTime extends JPanel implements Observer {
 		this.repaint();
 	}
 
+	/**
+	 * @return Image Lose
+	 */
 	public Image readImageLose() {
 		try {
 			this.Lose = ImageIO.read(new File("sprite/Lose.png"));

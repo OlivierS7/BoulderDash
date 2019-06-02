@@ -35,26 +35,44 @@ class DBProperties extends Properties {
 		}
 	}
 
+	/**
+	 * @return the Url
+	 */
 	public String getUrl() {
 		return this.url;
 	}
 
+	/**
+	 * @param url
+	 */
 	private void setUrl(final String url) {
 		this.url = url;
 	}
 
+	/**
+	 * @return the login
+	 */
 	public String getLogin() {
 		return this.login;
 	}
 
+	/**
+	 * @param login
+	 */
 	private void setLogin(final String login) {
 		this.login = login;
 	}
 
+	/**
+	 * @return the password
+	 */
 	public String getPassword() {
 		return this.password;
 	}
 
+	/**
+	 * @param password
+	 */
 	private void setPassword(final String password) {
 		this.password = password;
 	}

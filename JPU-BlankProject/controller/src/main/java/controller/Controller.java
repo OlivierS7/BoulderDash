@@ -16,6 +16,10 @@ public final class Controller implements IController {
 
 	private IModel model;
 
+	/**
+	 * @param view
+	 * @param model
+	 */
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
@@ -33,10 +37,16 @@ public final class Controller implements IController {
 		this.model.loop();
 	}
 
+	/**
+	 * @param pview
+	 */
 	public void setView(final IView pview) {
 		this.view = pview;
 	}
 
+	/**
+	 * @param model
+	 */
 	public void setModel(final IModel model) {
 		this.model = model;
 	}
@@ -75,6 +85,9 @@ public final class Controller implements IController {
 		}
 	}
 	
+	/**
+	 * @return Welcome Message
+	 */
 	public String getMessage() {
 		return "Welcome to our BoulderDash game !\n"
 				+ "The game's protagonist is called Rockford and this is your character.\n"

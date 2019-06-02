@@ -13,6 +13,10 @@ import entity.Map;
  */
 class DAOMap extends DAOEntity<Map> {
 
+	/**
+	 * @param connection
+	 * @throws SQLException
+	 */
 	public DAOMap(final Connection connection) throws SQLException {
 		super(connection);
 	}

@@ -23,41 +23,75 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	private static final long serialVersionUID = -697358409737458175L;
 
+	/**
+	 * @param model
+	 * @throws HeadlessException
+	 */
 	public ViewFrame(final IModel model) throws HeadlessException {
 		this.buildViewFrame(model, 0);
 	}
 
+	/**
+	 * @param model
+	 * @param gc
+	 */
 	public ViewFrame(final IModel model, final GraphicsConfiguration gc) {
 		super(gc);
 		this.buildViewFrame(model, 0);
 	}
 
+	/**
+	 * @param model
+	 * @param title
+	 * @throws HeadlessException
+	 */
 	public ViewFrame(final IModel model, final String title) throws HeadlessException {
 		super(title);
 		this.buildViewFrame(model, 0);
 	}
 
+	/**
+	 * @param model
+	 * @param title
+	 * @param gc
+	 */
 	public ViewFrame(final IModel model, final String title, final GraphicsConfiguration gc) {
 		super(title, gc);
 		this.buildViewFrame(model, 0);
 	}
 
+	/**
+	 * @return an IController
+	 */
 	private IController getController() {
 		return this.controller;
 	}
 
+	/**
+	 * @param controller
+	 */
 	protected void setController(final IController controller) {
 		this.controller = controller;
 	}
 
+	/**
+	 * @return an IModel
+	 */
 	protected IModel getModel() {
 		return this.model;
 	}
 
+	/**
+	 * @param model
+	 */
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
 
+	/**
+	 * @param model
+	 * @param nb
+	 */
 	public void buildViewFrame(final IModel model, int nb) {
 		if (nb == 0) {
 			this.setModel(model);
@@ -89,6 +123,10 @@ class ViewFrame extends JFrame implements KeyListener {
 		}
 	}
 
+	/**
+	 * Print a message in a pop-up
+	 * @param message
+	 */
 	public void printMessage(final String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}

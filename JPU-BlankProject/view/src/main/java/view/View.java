@@ -17,11 +17,18 @@ public final class View implements IView, Runnable {
 
 	private final ViewFrame viewFrame;
 
+	/**
+	 * @param model
+	 */
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);
 		SwingUtilities.invokeLater(this);
 	}
 
+	/**
+	 * @param keyCode
+	 * @return a ControllerOrder
+	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
 		case KeyEvent.VK_NUMPAD1:

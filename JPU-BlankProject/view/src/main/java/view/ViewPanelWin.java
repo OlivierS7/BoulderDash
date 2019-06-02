@@ -23,16 +23,25 @@ public class ViewPanelWin extends JPanel implements Observer {
 
 	Image Win;
 
+	/**
+	 * @param viewFrame
+	 */
 	public ViewPanelWin(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
 	}
 
+	/**
+	 * @return a ViewFrame
+	 */
 	@SuppressWarnings("unused")
 	private ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
 
+	/**
+	 * @param viewFrame
+	 */
 	private void setViewFrame(final ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
 	}
@@ -41,7 +50,10 @@ public class ViewPanelWin extends JPanel implements Observer {
 		this.repaint();
 	}
 
-	public Image readImageLose() {
+	/**
+	 * @return Image Win
+	 */
+	public Image readImageWin() {
 		try {
 			this.Win = ImageIO.read(new File("sprite/Win.png"));
 		} catch (IOException e) {
@@ -52,7 +64,7 @@ public class ViewPanelWin extends JPanel implements Observer {
 
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		readImageLose();
+		readImageWin();
 		this.setBackground(Color.BLACK);
 		graphics.drawImage(this.Win, 500, 200, this);
 	}

@@ -37,15 +37,24 @@ class ViewPanel extends JPanel implements Observer {
 
 	int pixelImage = 40;
 
+	/**
+	 * @param viewFrame
+	 */
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
 	}
 
+	/**
+	 * @return a ViewFrame
+	 */
 	private ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
 
+	/**
+	 * @param viewFrame
+	 */
 	private void setViewFrame(final ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
 	}
@@ -54,6 +63,9 @@ class ViewPanel extends JPanel implements Observer {
 		this.repaint();
 	}
 
+	/**
+	 * @return Image Contour
+	 */
 	public Image readImageContour() {
 		try {
 			this.Contour = ImageIO.read(new File("sprite/Contour.png"));
@@ -63,6 +75,9 @@ class ViewPanel extends JPanel implements Observer {
 		return this.Contour;
 	}
 
+	/**
+	 * @return Image LittleDiamond
+	 */
 	public Image readImageLittleDiamond() {
 		try {
 			this.LittleDiamond = ImageIO.read(new File("sprite/LittleDiamond.png"));
@@ -72,6 +87,9 @@ class ViewPanel extends JPanel implements Observer {
 		return this.LittleDiamond;
 	}
 
+	/**
+	 * @return Image Clock
+	 */
 	public Image readImageClock() {
 		try {
 			this.Clock = ImageIO.read(new File("sprite/Clock.png"));
@@ -105,6 +123,10 @@ class ViewPanel extends JPanel implements Observer {
 		verifyWinOrLose(graphics);
 	}
 
+	/**
+	 * Method use to check if there's a win or a loose in the game
+	 * @param graphics
+	 */
 	private void verifyWinOrLose(Graphics graphics) {
 		Player playerPos = this.viewFrame.getModel().getMap().getPlayer();
 		if (this.viewFrame.getModel().getIsTime()) {
@@ -135,6 +157,10 @@ class ViewPanel extends JPanel implements Observer {
 		}
 	}
 
+	/**
+	 * Method use to draw static graphics elements
+	 * @param graphics
+	 */
 	public void drawGraphics(Graphics graphics) {
 		Player playerPos = this.viewFrame.getModel().getMap().getPlayer();
 		if (playerPos != null) {

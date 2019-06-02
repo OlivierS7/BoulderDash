@@ -18,6 +18,9 @@ final public class DBConnection {
 		this.open();
 	}
 
+	/**
+	 * @return an instance of the connection
+	 */
 	public static synchronized DBConnection getInstance() {
 		if (DBConnection.INSTANCE == null) {
 			DBConnection.INSTANCE = new DBConnection();
@@ -25,6 +28,9 @@ final public class DBConnection {
 		return DBConnection.INSTANCE;
 	}
 
+	/**
+	 * @return true if the connection is open
+	 */
 	private Boolean open() {
 		final DBProperties dbProperties = new DBProperties();
 		try {
@@ -39,6 +45,9 @@ final public class DBConnection {
 		return true;
 	}
 
+	/**
+	 * @return a connection
+	 */
 	public Connection getConnection() {
 		return this.connection;
 	}

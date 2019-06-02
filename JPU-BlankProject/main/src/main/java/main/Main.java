@@ -4,6 +4,10 @@ import controller.Controller;
 import model.Model;
 import view.View;
 
+/**
+ * @author Olivier
+ *
+ */
 public class Main {
 
 	public static void main(final String[] args) {
