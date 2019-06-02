@@ -16,7 +16,7 @@ public class DiamondTest extends EntityTest{
 
 	private int x = 10;
 	private int y = 10;
-	private String image = "Diamond.png";
+	private String image = "Front_Diamond.png";
 	private char character = 'D';
 	
 	@Before
