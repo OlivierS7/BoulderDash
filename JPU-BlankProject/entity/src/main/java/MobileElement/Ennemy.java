@@ -25,50 +25,87 @@ public class Ennemy extends MobileElement {
 		}
 	}
 
+	/**
+	 * @return SpriteUp
+	 */
 	public static Sprite getSpriteUp() {
 		return spriteUp;
 	}
 
+	/**
+	 * @param spriteUp
+	 */
 	public static void setSpriteUp(Sprite spriteUp) {
 		Ennemy.spriteUp = spriteUp;
 	}
 
+	/**
+	 * @return SpriteDown
+	 */
 	public static Sprite getSpriteDown() {
 		return spriteDown;
 	}
 
+	/**
+	 * @param spriteDown
+	 */
 	public static void setSpriteDown(Sprite spriteDown) {
 		Ennemy.spriteDown = spriteDown;
 	}
 
+	/**
+	 * @return if the ennemy is alive
+	 */
 	public boolean isAlive() {
 		return isAlive;
 	}
 
+	/**
+	 * @param isAlive
+	 */
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
 	}
 
+	/**
+	 * @return SpriteRight
+	 */
 	public static Sprite getSpriteRight() {
 		return spriteRight;
 	}
 
+	/**
+	 * @param spriteRight
+	 */
 	public static void setSpriteRight(Sprite spriteRight) {
 		Ennemy.spriteRight = spriteRight;
 	}
 
+	/**
+	 * @return SpriteLeft
+	 */
 	public static Sprite getSpriteLeft() {
 		return spriteLeft;
 	}
 
+	/**
+	 * @param spriteLeft
+	 */
 	public static void setSpriteLeft(Sprite spriteLeft) {
 		Ennemy.spriteLeft = spriteLeft;
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Ennemy(int x, int y) {
 		super(spriteDown, x, y);
 	}
 
+	/**
+	 * Method use to update Sprite Ennemy
+	 */
 	public void updateSpriteEnnemy() {
 		this.setSprite(Ennemy.spriteUp);
 		try {

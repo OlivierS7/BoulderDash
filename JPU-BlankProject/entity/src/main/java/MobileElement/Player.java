@@ -25,42 +25,74 @@ public class Player extends MobileElement {
 		}
 	}
 
+	/**
+	 * @return SpriteUp
+	 */
 	public static Sprite getSpriteUp() {
 		return spriteUp;
 	}
 
+	/**
+	 * @param spriteUp
+	 */
 	public static void setSpriteUp(Sprite spriteUp) {
 		Player.spriteUp = spriteUp;
 	}
 
+	/**
+	 * @return SpriteDown
+	 */
 	public static Sprite getSpriteDown() {
 		return spriteDown;
 	}
 
+	/**
+	 * @param spriteDown
+	 */
 	public static void setSpriteDown(Sprite spriteDown) {
 		Player.spriteDown = spriteDown;
 	}
 
+	/**
+	 * @return SpriteLeft
+	 */
 	public static Sprite getSpriteLeft() {
 		return spriteLeft;
 	}
 
+	/**
+	 * @param spriteLeft
+	 */
 	public static void setSpriteLeft(Sprite spriteLeft) {
 		Player.spriteLeft = spriteLeft;
 	}
 
+	/**
+	 * @return SpriteRight
+	 */
 	public static Sprite getSpriteRight() {
 		return spriteRight;
 	}
 
+	/**
+	 * @param spriteRight
+	 */
 	public static void setSpriteRight(Sprite spriteRight) {
 		Player.spriteRight = spriteRight;
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Player(int x, int y) {
 		super(spriteDown, x, y);
 	}
 
+	/**
+	 * Method use to update Sprite Player
+	 * @param keyTyped
+	 */
 	public void updateSpritePlayer(char keyTyped) {
 		switch (keyTyped) {
 		case 'Z':
@@ -101,10 +133,16 @@ public class Player extends MobileElement {
 
 	}
 
+	/**
+	 * @return if the player is alive
+	 */
 	public boolean isAlive() {
 		return isAlive;
 	}
 
+	/**
+	 * @param isAlive
+	 */
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
 	}

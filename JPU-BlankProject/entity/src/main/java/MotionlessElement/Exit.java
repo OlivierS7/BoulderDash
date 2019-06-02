@@ -20,6 +20,10 @@ public class Exit extends MotionlessElement {
 		}
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Exit(int x, int y) {
 		super(sprite, x, y);
 	}

@@ -16,10 +16,16 @@ public class CollisionsHandler {
 
 	private Map map;
 
+	/**
+	 * @param map
+	 */
 	public CollisionsHandler(Map map) {
 		this.map = map;
 	}
 
+	/**
+	 * Method use to check gravity
+	 */
 	public void checkGravity() {
 
 		Entity[][] entity = this.map.getEntityMap();

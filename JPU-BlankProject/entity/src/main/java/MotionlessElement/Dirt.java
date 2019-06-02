@@ -20,6 +20,10 @@ public class Dirt extends MotionlessElement {
 		}
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Dirt(int x, int y) {
 		super(sprite, x, y);
 	}

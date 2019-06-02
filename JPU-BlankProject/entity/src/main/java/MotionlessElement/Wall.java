@@ -20,6 +20,10 @@ public class Wall extends MotionlessElement {
 		}
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Wall(int x, int y) {
 		super(sprite, x, y);
 	}

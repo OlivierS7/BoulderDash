@@ -20,6 +20,10 @@ public class Air extends MotionlessElement {
 		}
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Air(int x, int y) {
 		super(sprite, x, y);
 	}

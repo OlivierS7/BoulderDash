@@ -31,6 +31,10 @@ public class Map extends Entity implements Runnable {
 
 	private boolean isWin;
 
+	/**
+	 * @param id
+	 * @param message
+	 */
 	public Map(final int id, final String message) {
 		super();
 		this.setId(id);
@@ -40,6 +44,9 @@ public class Map extends Entity implements Runnable {
 		createMap();
 	}
 
+	/**
+	 * @return Time since the start of the map
+	 */
 	public long getTimeSinceStart() {
 		return System.currentTimeMillis() - this.startTime;
 	}
@@ -48,44 +55,74 @@ public class Map extends Entity implements Runnable {
 		this(1, "");
 	}
 
+	/**
+	 * @return Id of the map
+	 */
 	public int getId() {
 		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(final int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return Width of the map
+	 */
 	public int getWidthMap() {
 		String[] map = this.getContent().split("\n");
 		return map[0].length() - 1;
 	}
 
+	/**
+	 * @return Height of the map
+	 */
 	public int getHeightMap() {
 		String[] map = this.getContent().split("\n");
 		return map.length;
 	}
 
+	/**
+	 * @return Content of the map
+	 */
 	public String getContent() {
 		return this.content;
 	}
 
-	public void setContent(final String message) {
-		this.content = message;
+	/**
+	 * @param Content
+	 */
+	public void setContent(final String Content) {
+		this.content = Content;
 	}
 
+	/**
+	 * @return if there's a win in the game
+	 */
 	public boolean isWin() {
 		return isWin;
 	}
 
+	/**
+	 * @param isWin
+	 */
 	public void setWin(boolean isWin) {
 		this.isWin = isWin;
 	}
 
+	/**
+	 * @return a two dimensional array with the entities of the map
+	 */
 	public Entity[][] getEntityMap() {
 		return this.mapEntity;
 	}
 
+	/**
+	 * @return The player in the map
+	 */
 	public Player getPlayer() {
 		Entity[][] entity = this.getEntityMap();
 		for (int y = 0; y < getHeightMap(); y++) {
@@ -98,10 +135,16 @@ public class Map extends Entity implements Runnable {
 		return null;
 	}
 
+	/**
+	 * @return The count of diamond
+	 */
 	public int getCount() {
 		return count;
 	}
 
+	/**
+	 * @param count
+	 */
 	public void setCount(int count) {
 		if (count < 0) {
 			try {
@@ -113,6 +156,13 @@ public class Map extends Entity implements Runnable {
 		this.count = count;
 	}
 
+	/**
+	 * Method use to check if there's a collision
+	 * @param playerPos
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isCollision(Entity[][] playerPos, int x, int y) {
 		if (playerPos[x][y] instanceof Stone || playerPos[x][y] instanceof Wall || playerPos[x][y] instanceof Exit
 				|| playerPos[x][y] instanceof Ennemy) {
@@ -122,6 +172,13 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * Method use to check if there's a diamond
+	 * @param playerPos
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isDiamond(Entity[][] playerPos, int x, int y) {
 		if (playerPos[x][y] instanceof Diamond) {
 			return true;
@@ -130,10 +187,20 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * @return if the player is alive
+	 */
 	public boolean isPlayerAlive() {
 		return this.getPlayer().isAlive();
 	}
 
+	/**
+	 * Method use to check if there's a win
+	 * @param playerPos
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isWin(Entity[][] playerPos, int x, int y) {
 		if (playerPos[x][y] instanceof Exit && getCount() >= 10) {
 			this.setWin(true);
@@ -143,6 +210,9 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * @return timer
+	 */
 	public boolean isTime() {
 		if (getCountdown() * 1000 - getTimeSinceStart() < 0) {
 			return true;
@@ -150,6 +220,13 @@ public class Map extends Entity implements Runnable {
 		return false;
 	}
 
+	/**
+	 * Method use to check if there's a Stone on the right
+	 * @param playerPos
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isStoneOnRight(Entity[][] playerPos, int x, int y) {
 		if (playerPos[x][y] instanceof Stone && playerPos[x + 1][y] instanceof Air) {
 			return true;
@@ -158,6 +235,13 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * Method use to check if there's Stone on the left
+	 * @param playerPos
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isStoneOnLeft(Entity[][] playerPos, int x, int y) {
 		if (playerPos[x][y] instanceof Stone && playerPos[x - 1][y] instanceof Air) {
 			return true;
@@ -166,14 +250,23 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * @param countdown
+	 */
 	public void setCountdown(int countdown) {
 		this.countdown = countdown;
 	}
 
+	/**
+	 * @return countdown
+	 */
 	public int getCountdown() {
 		return this.countdown;
 	}
 
+	/**
+	 * @return Ennemies on the map
+	 */
 	public ArrayList<Ennemy> getEnnemy() {
 		Entity[][] entity = this.getEntityMap();
 		ArrayList<Ennemy> ennemy = new ArrayList<Ennemy>();
@@ -187,6 +280,10 @@ public class Map extends Entity implements Runnable {
 		return ennemy;
 	}
 
+	/**
+	 * Method use to move the ennemy up
+	 * @param e
+	 */
 	public void moveEnnemyUp(Ennemy e) {
 		boolean collision = isEnnemyCollision(getEntityMap(), e.getX(), e.getY() - 1);
 		boolean isEnnemyOnPlayer = isEnnemyOnPlayer(getEntityMap(), e.getX(), e.getY() - 1);
@@ -202,6 +299,10 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * Method use to move the ennemy down
+	 * @param e
+	 */
 	public void moveEnnemyDown(Ennemy e) {
 		boolean collision = isEnnemyCollision(getEntityMap(), e.getX(), e.getY() + 1);
 		boolean isEnnemyOnPlayer = isEnnemyOnPlayer(getEntityMap(), e.getX(), e.getY() + 1);
@@ -217,6 +318,10 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * Method use to move the ennemy right
+	 * @param e
+	 */
 	public void moveEnnemyRight(Ennemy e) {
 		boolean collision = isEnnemyCollision(getEntityMap(), e.getX() + 1, e.getY());
 		boolean isEnnemyOnPlayer = isEnnemyOnPlayer(getEntityMap(), e.getX() + 1, e.getY());
@@ -232,6 +337,10 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * Method use to move the ennemy left
+	 * @param e
+	 */
 	public void moveEnnemyLeft(Ennemy e) {
 		boolean collision = isEnnemyCollision(getEntityMap(), e.getX() - 1, e.getY());
 		boolean isEnnemyOnPlayer = isEnnemyOnPlayer(getEntityMap(), e.getX() - 1, e.getY());
@@ -247,6 +356,13 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * Method use to check if there's a collision
+	 * @param EnnemyPos
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isEnnemyCollision(Entity[][] EnnemyPos, int x, int y) {
 		if (EnnemyPos[x][y] instanceof Stone || EnnemyPos[x][y] instanceof Dirt || EnnemyPos[x][y] instanceof Wall
 				|| EnnemyPos[x][y] instanceof Diamond || EnnemyPos[x][y] instanceof Exit) {
@@ -256,6 +372,13 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * Method use to check if the ennemy is on player
+	 * @param EnnemyPos
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isEnnemyOnPlayer(Entity[][] EnnemyPos, int x, int y) {
 		if (EnnemyPos[x][y] instanceof Player) {
 			return true;
@@ -277,10 +400,18 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * @param maximum
+	 * @param minimum
+	 * @return a random number between min and max
+	 */
 	public static int getRandom(int maximum, int minimum) {
 		return ((int) (Math.random() * (maximum - minimum))) + minimum;
 	}
 
+	/**
+	 * Method use to move ennemy
+	 */
 	public void moveEnnemy() {
 		ArrayList<Ennemy> ennemy = getEnnemy();
 		for (Ennemy e : ennemy) {
@@ -302,6 +433,10 @@ public class Map extends Entity implements Runnable {
 		}
 	}
 
+	/**
+	 * Method use to move the player up
+	 * @return if the player win
+	 */
 	public boolean moveUp() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY() - 1);
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX(), getPlayer().getY() - 1);
@@ -326,6 +461,10 @@ public class Map extends Entity implements Runnable {
 
 	}
 
+	/**
+	 * Method use to move the player down
+	 * @return if the player win
+	 */
 	public boolean moveDown() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX(), getPlayer().getY() + 1);
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX(), getPlayer().getY() + 1);
@@ -349,6 +488,10 @@ public class Map extends Entity implements Runnable {
 		return false;
 	}
 
+	/**
+	 * Method use to move the player left
+	 * @return if the player win
+	 */
 	public boolean moveLeft() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX() - 1, getPlayer().getY());
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX() - 1, getPlayer().getY());
@@ -382,6 +525,10 @@ public class Map extends Entity implements Runnable {
 		return false;
 	}
 
+	/**
+	 * Method use to move the player right
+	 * @return if the player win
+	 */
 	public boolean moveRight() {
 		boolean collision = isCollision(getEntityMap(), getPlayer().getX() + 1, getPlayer().getY());
 		boolean isDiamond = isDiamond(getEntityMap(), getPlayer().getX() + 1, getPlayer().getY());
@@ -416,6 +563,9 @@ public class Map extends Entity implements Runnable {
 		return false;
 	}
 
+	/**
+	 * Method sue to create the map
+	 */
 	public void createMap() {
 		String map = this.getContent();
 		if (getHeightMap() >= 1 && getWidthMap() >= 1) {

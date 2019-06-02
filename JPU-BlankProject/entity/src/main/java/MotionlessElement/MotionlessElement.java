@@ -9,6 +9,11 @@ import entity.Sprite;
  */
 public class MotionlessElement extends Entity {
 
+	/**
+	 * @param sprite
+	 * @param x
+	 * @param y
+	 */
 	public MotionlessElement(Sprite sprite, int x, int y) {
 		super(sprite, x, y);
 	}
