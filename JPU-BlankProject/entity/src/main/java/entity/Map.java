@@ -281,6 +281,29 @@ public class Map extends Entity implements Runnable {
 	}
 
 	/**
+	 * @return Diamonds on the map
+	 */
+	public ArrayList<Diamond> getDiamonds() {
+		Entity[][] entity = this.getEntityMap();
+		ArrayList<Diamond> diamond = new ArrayList<Diamond>();
+		for (int y = 0; y < getHeightMap(); y++) {
+			for (int x = 0; x < getWidthMap(); x++) {
+				if (entity[x][y] instanceof Diamond) {
+					diamond.add((Diamond) entity[x][y]);
+				}
+			}
+		}
+		return diamond;
+	}
+	
+	
+	public void UpdateDiamond() {
+		ArrayList<Diamond> diamonds = getDiamonds();
+		for (Diamond diamond : diamonds) {
+			//diamond.updateSpriteDiamond();
+		}
+	}
+	/**
 	 * Method use to move the ennemy up
 	 * @param e
 	 */
