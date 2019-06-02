@@ -300,7 +300,7 @@ public class Map extends Entity implements Runnable {
 	public void UpdateDiamond() {
 		ArrayList<Diamond> diamonds = getDiamonds();
 		for (Diamond diamond : diamonds) {
-			//diamond.updateSpriteDiamond();
+			diamond.updateSpriteDiamond();
 		}
 	}
 	/**

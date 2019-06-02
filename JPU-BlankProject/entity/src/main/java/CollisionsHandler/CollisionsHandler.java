@@ -107,6 +107,6 @@ public class CollisionsHandler {
 				}
 			}
 		}
-		//this.map.UpdateDiamond();
+		this.map.UpdateDiamond();
 	}
 }
