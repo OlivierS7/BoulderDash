@@ -36,6 +36,9 @@ public class ExitWinTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Check if the win works
+	 */
 	@Test
 	public void testIsWin() {
 		final boolean expected = true;

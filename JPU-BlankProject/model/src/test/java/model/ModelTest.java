@@ -32,6 +32,9 @@ public class ModelTest {
     public void tearDown() throws Exception {
     }
 
+    /**
+     * Test of the GetIsWin method
+     */
     @Test
     public void testGetIsWin() {
         boolean expected = false;

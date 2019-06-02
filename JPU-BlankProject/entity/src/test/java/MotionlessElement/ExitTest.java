@@ -26,6 +26,9 @@ public class ExitTest extends EntityTest {
 		super.tearDown();
 	}
 
+	/**
+	 * Test of constructor
+	 */
 	@Test
 	public void testExit() {
 		super.testEntitySpriteIntInt();

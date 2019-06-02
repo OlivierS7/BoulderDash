@@ -28,6 +28,9 @@ public abstract class EntityTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Check if entity is not null
+	 */
 	@Test
 	public void testEntitySpriteIntInt() {
 		assertNotNull(entity.getX());

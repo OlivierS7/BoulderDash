@@ -39,6 +39,9 @@ public class DiamondCountTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Method use to test the method setCount
+	 */
 	@Test
 	public void testSetCount() {
 		if(isDiamond) {

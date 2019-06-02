@@ -19,6 +19,9 @@ public class MapCountExceptionTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test on the method setCount
+	 */
 	@Test
 	public void testSetCount() {
 		try {

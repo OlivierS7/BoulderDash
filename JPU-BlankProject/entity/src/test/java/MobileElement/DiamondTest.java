@@ -30,6 +30,9 @@ public class DiamondTest extends EntityTest{
 		super.tearDown();
 	}
 
+	/**
+	 * Test of constructor
+	 */
 	@Test
 	public void testDiamond() {
 		super.testEntitySpriteIntInt();

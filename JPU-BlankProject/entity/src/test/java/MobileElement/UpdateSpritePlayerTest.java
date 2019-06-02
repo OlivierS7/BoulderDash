@@ -90,6 +90,9 @@ public class UpdateSpritePlayerTest {
 //		assertEquals(expected, testPlayer.getSprite());
 //	}
 
+	/**
+	 * Test of the method setSprite
+	 */
 	@Test
 	public void testUpdateSpritePlayer() {
 		switch (keyTyped) {

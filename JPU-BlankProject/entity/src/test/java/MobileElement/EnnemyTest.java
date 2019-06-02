@@ -30,6 +30,9 @@ public class EnnemyTest extends EntityTest {
 		super.tearDown();
 	}
 
+	/**
+	 * Test of constructor
+	 */
 	@Test
 	public void testEnnemy() {
 		super.testEntitySpriteIntInt();

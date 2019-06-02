@@ -28,18 +28,27 @@ public class GetMessageTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test of the getWinMessage method
+	 */
 	@Test
 	public void testGetWinMessage() {
 		final String expected = "Thanks you for playing at our game. We hope that you will come back soon ! =)\nRestart the game to play on another map !";
 		assertEquals(expected, this.model.getWinMessage());
 	}
 
+	/**
+	 * Test of the getLostTimeMessage method
+	 */
 	@Test
 	public void testGetLostTimeMessage() {
 		final String expected = "Time run out... =(\nRestart the game to play on another map !";
 		assertEquals(expected, this.model.getLostTimeMessage());
 	}
 
+	/**
+	 * Test of the getLostDeadMessage method
+	 */
 	@Test
 	public void testGetLostDeadMessage() {
 		final String expected = "You're dead !!\n Restart the game to try again !";

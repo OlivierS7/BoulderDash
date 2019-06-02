@@ -26,6 +26,9 @@ public class WallTest extends EntityTest {
 		super.tearDown();
 	}
 
+	/**
+	 * Test of constructor
+	 */
 	@Test
 	public void testWall() {
 		super.testEntitySpriteIntInt();

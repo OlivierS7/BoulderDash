@@ -27,17 +27,20 @@
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> tearDown() <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  	}
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  	@Test
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetMessage() {
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  		String expected = <span class="jxr_string">"Welcome to our BoulderDash game !\n"</span>
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  				+ <span class="jxr_string">"The game's protagonist is called Rockford and this is your character.\n"</span>
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  				+ <span class="jxr_string">"You must dig through caves collecting diamonds (minimum 10) and reach the exit within a time limit,\n"</span>
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  				+ <span class="jxr_string">"while avoiding various types of dangerous creatures as well as obstacles like falling rocks and the constant danger of being crushed or trapped by an avalanche. \n\n"</span>
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  				+ <span class="jxr_string">"Please choose a map : 1, 2, 3, 4 or 5"</span>;
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		assertEquals(expected, <strong class="jxr_keyword">this</strong>.controller.getMessage());
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  	}
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  }
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment">	 * Method use to check if the method getMessage is working</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  	@Test
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetMessage() {
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  		String expected = <span class="jxr_string">"Welcome to our BoulderDash game !\n"</span>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  				+ <span class="jxr_string">"The game's protagonist is called Rockford and this is your character.\n"</span>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  				+ <span class="jxr_string">"You must dig through caves collecting diamonds (minimum 10) and reach the exit within a time limit,\n"</span>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  				+ <span class="jxr_string">"while avoiding various types of dangerous creatures as well as obstacles like falling rocks and the constant danger of being crushed or trapped by an avalanche. \n\n"</span>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  				+ <span class="jxr_string">"Please choose a map : 1, 2, 3, 4 or 5"</span>;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  		assertEquals(expected, <strong class="jxr_keyword">this</strong>.controller.getMessage());
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  	}
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2019. All rights reserved.</div>

@@ -19,6 +19,9 @@ public class ControllerTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Method use to check if the method getMessage is working
+	 */
 	@Test
 	public void testGetMessage() {
 		String expected = "Welcome to our BoulderDash game !\n"

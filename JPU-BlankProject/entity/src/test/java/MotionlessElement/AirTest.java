@@ -26,6 +26,9 @@ public class AirTest extends EntityTest {
 		super.tearDown();
 	}
 
+	/**
+	 * Test of constructor
+	 */
 	@Test
 	public void testAir() {
 		super.testEntitySpriteIntInt();

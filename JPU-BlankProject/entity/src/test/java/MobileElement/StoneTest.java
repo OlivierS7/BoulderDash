@@ -26,6 +26,9 @@ public class StoneTest extends EntityTest {
 		super.tearDown();
 	}
 
+	/**
+	 * Test of constructor
+	 */
 	@Test
 	public void testStone() {
 		super.testEntitySpriteIntInt();

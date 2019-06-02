@@ -26,6 +26,9 @@ public class DBConnectionTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test of the connection of the database
+	 */
 	@Test
 	public void testGetConnection() {
 		assertNotNull(database.DBConnection.getInstance());

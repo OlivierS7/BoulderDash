@@ -30,6 +30,9 @@ public class PlayerTest extends EntityTest {
 		super.tearDown();
 	}
 
+	/**
+	 * Test of constructor
+	 */
 	@Test
 	public void testPlayer() {
 		super.testEntitySpriteIntInt();

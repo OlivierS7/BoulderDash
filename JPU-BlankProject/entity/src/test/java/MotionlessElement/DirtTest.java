@@ -26,6 +26,9 @@ public class DirtTest extends EntityTest{
 		super.tearDown();
 	}
 
+	/**
+	 * Test of constructor
+	 */
 	@Test
 	public void testDirt() {
 		super.testEntitySpriteIntInt();
