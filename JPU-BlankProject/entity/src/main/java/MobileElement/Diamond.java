@@ -103,7 +103,7 @@ public class Diamond extends MobileElement {
 		default:
 			break;
 		}
-		setAnim((getAnim()+1)%5);
+		setAnim((getAnim()+1)%4);
 	}
 
 	public static Sprite getSprite1() {
