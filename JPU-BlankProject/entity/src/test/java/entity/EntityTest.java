@@ -33,7 +33,7 @@ public abstract class EntityTest {
 	 */
 	@Test
 	public void testEntitySpriteIntInt() {
-		assertNotNull(entity.getX());
+		assertNotNull(entity);
 	}
 
 }
